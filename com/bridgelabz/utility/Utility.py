@@ -1,5 +1,6 @@
 import random
 import math
+from time import time
 
 import array as arr
 import sys
@@ -52,31 +53,30 @@ class Utility:
 
 ##############################################################################
 
-    def findDistinct(self,number):
-        randomnumber = 0
+    def findDistinct(self, num_of_trails):
+
         randomcount = 0
         distinctcount = 0
         count = 0
-        flag = 0
 
-        distinctarray=[]
-        while number > distinctcount:
+        distinctlist=[]
+        while num_of_trails > distinctcount:
             flag = 0
-            randomnumber=random.randint(1,50)
+            randomnumber=random.randint(10, 15)
             randomcount=randomcount+1
             print(randomcount)
-            for i in range(number):
-                if distinctarray[i] != randomnumber and 0 < randomnumber:
+            for i in range(num_of_trails):
+                if (distinctlist[i] != randomnumber and 0 < randomnumber):
                     flag = 1
 
             if flag == 1:
-                distinctarray.append(randomnumber)
+                distinctlist.append(randomnumber)
                 count=count+1
                 distinctcount=distinctcount+1
 
         print("Total random numbers required: ",randomcount)
         print("Distinct Coupons are:")
-        print(distinctarray)
+        print(distinctlist)
 #####################################################################################
     def acceptElement(self,size):
         storeElement=[]
@@ -211,3 +211,23 @@ class Utility:
         print(matrix)
 
 #######################################################################################
+    def getstartandstoptime(self):
+        current_time =time()
+        return current_time
+
+    def elapsedTime(self,starttime,stoptime):
+        elapsed_time=stoptime-starttime
+        return elapsed_time
+
+######################################################################################
+    def computDelta(self,a,b,c):
+        return b * b - 4 * a * c
+
+    def findroots(self,a,b,c,deltaresult):
+        print("the roots are real and different")
+        root1 = (-b + math.sqrt(deltaresult)) / (2 * a)
+        root2 = (-b - math.sqrt(deltaresult)) / (2 * a)
+        print("root1:",root1)
+        print("root2:",root2)
+
+####################################################################################
