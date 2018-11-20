@@ -1,4 +1,5 @@
 import random
+import math
 import array as arr
 import sys
 
@@ -102,4 +103,10 @@ class Utility:
             print("Distinct Triplate Doesn't Exist")
 
 
+################################################################################
 
+    def FindEuclideanDistance(self,x,y):
+        Result1 =math.pow(x,x)
+        Result2 = math.pow(y,y)
+        distance = math.sqrt(Result1 + Result2)
+        return distance
