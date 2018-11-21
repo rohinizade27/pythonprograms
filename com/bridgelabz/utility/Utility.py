@@ -61,18 +61,15 @@ class Utility:
 
         distinctlist=[]
         while num_of_trails > distinctcount:
-            flag = 0
-            randomnumber=random.randint(10, 15)
+            flag =0
+            randomnumber=random.randint(1, 1000)
             randomcount=randomcount+1
-            print(randomcount)
+            print(randomnumber)
             for i in range(num_of_trails):
-                if (distinctlist[i] != randomnumber and 0 < randomnumber):
-                    flag = 1
+                if randomnumber not in  distinctlist:
+                    distinctlist.append(randomnumber)
 
-            if flag == 1:
-                distinctlist.append(randomnumber)
-                count=count+1
-                distinctcount=distinctcount+1
+            distinctcount = distinctcount + 1
 
         print("Total random numbers required: ",randomcount)
         print("Distinct Coupons are:")
@@ -230,4 +227,6 @@ class Utility:
         print("root1:",root1)
         print("root2:",root2)
 
-####################################################################################
+#####################################################################################
+# Algorithm Programs
+
