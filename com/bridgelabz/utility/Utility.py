@@ -228,5 +228,46 @@ class Utility:
         print("root2:",root2)
 
 #####################################################################################
-# Algorithm Programs
+                            # Algorithm Programs
+#####################################################################################
+    def anagramLogic(self,string1,string2):
+         string1=string1.replace(" ","" )
+         string2=string2.replace(" ","")
+         string1.lower()
+         string2.lower()
 
+         flag=0
+         if len(string1)==len(string2):
+             for i in range(len(string1)):
+                 for j in range(len(string1)):
+                     if string1[i]==string2[j]:
+                         flag=1
+
+
+         if flag==1:
+             print("string is an ANAGRAM")
+         else:
+             print("string is not an ANAGRAM")
+
+######################################################################################
+    def findPrimeNumber(self,lower_limit,upper_limit):
+         storeprime=[]
+
+         i=lower_limit
+
+         for i in range(upper_limit):
+             isprime = False
+             if i==0 and i==1:
+                 continue
+             for j in range(2,i):
+                 if i % j == 0:
+                     isprime = False
+                     break
+                 else:
+                     isprime = True
+
+             if isprime == True:
+                 storeprime.append(i)
+
+         return storeprime
+###########################################################################################
