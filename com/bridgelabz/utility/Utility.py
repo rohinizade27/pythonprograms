@@ -1,6 +1,7 @@
 import random
 import math
 from time import time
+import fileinput
 
 import array as arr
 import sys
@@ -299,7 +300,7 @@ class Utility:
 
 #####################################################################################
     def guessingGameLogic(self,n):
-        storerange = []
+
         range = int(math.pow(2,n))
 
         print("The rang for guessing game is:",1," to ",range)
@@ -309,27 +310,81 @@ class Utility:
         high=range
         def binarysearch(low,high):
 
-
-
-            while low < high:
+            while low <=high:
                 mid = int((high + low) / 2)
-                if high - low == 1:
-                    print(mid)
-
-                print("Guess the number:")
-                print("1)Range is:",low ,"to",mid)
-                print("2)Range is:",mid+1, "to",high)
-                guess_number=int(input("In which range number is present..??"))
-
-                if guess_number==1:
-                    binarysearch(low,mid-1)
-                elif guess_number==2:
-                    binarysearch(mid+1,high)
+                print("Is your guessed number is",mid,"?....","PRESS 1 IF YES ELSE PRESS ANY NUMBER:")
+                result=int(input(""))
+                if result==1:
+                    print(mid ,"is your number..!!!!")
+                    exit()
                 else:
-                    print("!!!..wrong choice..!!!")
+                    print("Guess the number:")
+                    print("1)Range is:",low ,"to",mid)
+                    print("2)Range is:",mid+1, "to",high)
+                    guess_number=int(input("In which range number is present..??"))
+
+                    if guess_number==1:
+                        binarysearch(low,mid-1)
+                    elif guess_number==2:
+                        binarysearch(mid+1,high)
+                    else:
+                        print("!!!..wrong choice..!!!")
 
 
         binarysearch(low,high)
+
+################################################################################################
+    def acceptListElement(self,size):
+        storeword=[]
+        for i in range(size):
+            word=input("")
+            storeword.append(word)
+        return storeword
+
+    def searchElement(self,key,low,high,wordlist):
+
+        while high<=low:
+            mid = (low + high) / 2
+            if key == wordlist[mid]:
+                print(key,"found at",mid," positiom")
+            if key<wordlist[mid]:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return -1
+
+
+
+
+    def binarySearch(self,wordlist):
+
+        fileojbect = open("BinarySearch.txt", "r+")
+        fileojbect.writelines(str(wordlist))
+        fileojbect.close()
+        low = 0
+        high = len(wordlist) - 1
+
+        fileojbect = open("BinarySearch.txt", "r")
+        storefilecontent = []
+        storefilecontent = fileojbect.readlines()
+        # for i in line:
+        #     i.split(',')
+        #     print(i)
+        #     storefilecontent.append(i)
+
+
+        print(storefilecontent)
+
+        key=input("Enter the Element you want to search:")
+        result=Utility().searchElement(key,low,high,storefilecontent)
+
+        if result==-1:
+            print("The key element you have entered is not present in a list:")
+        else:
+            pass
+
+
+        fileojbect.close()
 
 
 
