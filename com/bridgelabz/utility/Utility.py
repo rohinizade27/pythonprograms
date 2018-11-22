@@ -233,21 +233,25 @@ class Utility:
     def anagramLogic(self,string1,string2):
          string1=string1.replace(" ","" )
          string2=string2.replace(" ","")
-         string1.lower()
-         string2.lower()
 
-         flag=0
-         if len(string1)==len(string2):
-             for i in range(len(string1)):
-                 for j in range(len(string1)):
-                     if string1[i]==string2[j]:
-                         flag=1
+         lowercasestring1 = string1.lower()
+         lowercasestring2 = string2.lower()
+
+         str1_removeduplicates="".join(set(lowercasestring1))
+         str2_removeduplicates = "".join(set(lowercasestring2))
+
+         count=0
+         if len( str1_removeduplicates)==len(str2_removeduplicates):
+             for i in range(len(str1_removeduplicates)):
+                 for j in range(len(str1_removeduplicates)):
+                     if str1_removeduplicates[i]== str2_removeduplicates[j]:
+                         count=count+1
 
 
-         if flag==1:
-             print("string is an ANAGRAM")
+         if count==len(str1_removeduplicates):
+             print(string1,"and",string2," are an Anagram")
          else:
-             print("string is not an ANAGRAM")
+             print(string1,"and",string2," are an not Anagram")
 
 ######################################################################################
     def findPrimeNumber(self,lower_limit,upper_limit):
@@ -271,3 +275,32 @@ class Utility:
 
          return storeprime
 ###########################################################################################
+    def checkPalindrome(self, primenumber):
+        print(primenumber)
+        for i in range(len(primenumber)):
+            reversenum = 0
+            if primenumber[i] > 0:
+                temp = primenumber[i]
+                while temp > 0:
+                    r = temp % 10
+                    temp = temp // 10
+                    reversenum = reversenum * 10 + r
+                temp = primenumber[i]
+                if temp == reversenum:
+                    print(reversenum," is a palindrome")
+
+    def checkAnagram(self,primenumber):
+        print(primenumber)
+        print("The prime number which are Anagram:")
+        for i in range(len(primenumber)):
+            for j in range(len(primenumber)):
+                if primenumber[i] > 0 and primenumber[j] > 0:
+                    string1=str(primenumber[i])
+                    string2=str(primenumber[j])
+                    self.anagramLogic(string1,string2)
+
+#####################################################################################
+
+
+
+
