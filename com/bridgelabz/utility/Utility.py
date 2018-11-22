@@ -276,7 +276,6 @@ class Utility:
          return storeprime
 ###########################################################################################
     def checkPalindrome(self, primenumber):
-        print(primenumber)
         for i in range(len(primenumber)):
             reversenum = 0
             if primenumber[i] > 0:
@@ -290,7 +289,6 @@ class Utility:
                     print(reversenum," is a palindrome")
 
     def checkAnagram(self,primenumber):
-        print(primenumber)
         print("The prime number which are Anagram:")
         for i in range(len(primenumber)):
             for j in range(len(primenumber)):
@@ -300,6 +298,45 @@ class Utility:
                     self.anagramLogic(string1,string2)
 
 #####################################################################################
+    def guessingGameLogic(self,n):
+        storerange = []
+        range = int(math.pow(2,n))
+
+        print("The rang for guessing game is:",1," to ",range)
+
+
+        low=1
+        high=range
+        def binarysearch(low,high):
+
+
+
+            while low < high:
+                mid = int((high + low) / 2)
+                if high - low == 1:
+                    print(mid)
+
+                print("Guess the number:")
+                print("1)Range is:",low ,"to",mid)
+                print("2)Range is:",mid+1, "to",high)
+                guess_number=int(input("In which range number is present..??"))
+
+                if guess_number==1:
+                    binarysearch(low,mid-1)
+                elif guess_number==2:
+                    binarysearch(mid+1,high)
+                else:
+                    print("!!!..wrong choice..!!!")
+
+
+        binarysearch(low,high)
+
+
+
+
+
+
+
 
 
 
