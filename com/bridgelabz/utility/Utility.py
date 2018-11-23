@@ -423,25 +423,25 @@ class Utility:
         while len(mergesortlist)!=0:
             leftlist = []
             rightlist = []
-            print(mergesortlist)
+            # print(mergesortlist)
+
             if len(mergesortlist) == 0 or len(mergesortlist) == 1:
                 print(mergesortlist)
             else:
                 lower_limit = 0
                 higher_limit = len(mergesortlist) - 1
                 mid = (lower_limit + higher_limit) // 2
+                for i in range(mid + 1):
+                    leftlist.append(mergesortlist[i])
 
-            for i in range(mid + 1):
-                leftlist.append(mergesortlist[i])
+                for j in range(mid + 1, higher_limit + 1):
+                     rightlist.append(mergesortlist[j])
 
-            for j in range(mid + 1, higher_limit + 1):
-                rightlist.append(mergesortlist[j])
+                print("left list:", leftlist)
+                print("right list:", rightlist)
 
-            print("left list:", leftlist)
-            print("right list:", rightlist)
-
-            # self.mergeSortLogic(leftlist)
-            # self.mergeSortLogic(rightlist)
+            self.mergeSortLogic(leftlist)
+            self.mergeSortLogic(rightlist)
             Utility().sortlists(leftlist,rightlist)
 
     def sortlists(self,leftlist,rightlist):
