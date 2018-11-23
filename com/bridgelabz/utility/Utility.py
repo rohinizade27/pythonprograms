@@ -1,7 +1,9 @@
 import random
 import math
+from functools import reduce
 from time import time
-import fileinput
+
+
 
 import array as arr
 import sys
@@ -341,50 +343,138 @@ class Utility:
             storeword.append(word)
         return storeword
 
-    def searchElement(self,key,low,high,wordlist):
+    def searchElement(self, key, lower_limit, upper_limit, storefilecontent):
+        flag=0
+        while  lower_limit <= upper_limit:
+            mid = (lower_limit + upper_limit) // 2
 
-        while high<=low:
-            mid = (low + high) / 2
-            if key == wordlist[mid]:
-                print(key,"found at",mid," positiom")
-            if key<wordlist[mid]:
-                low = mid + 1
+            if key == storefilecontent[mid]:
+                print(key, "found at", mid, " positiom")
+                flag=1
+
+            if key<storefilecontent[mid]:
+                upper_limit = mid - 1
             else:
-                high = mid - 1
-        return -1
+                lower_limit = mid + 1
+
+        if flag==0:
+            print("The number you want to search is not present in a list")
 
 
 
 
-    def binarySearch(self,wordlist):
+    def binarySearch(self):
 
-        fileojbect = open("BinarySearch.txt", "r+")
-        fileojbect.writelines(str(wordlist))
-        fileojbect.close()
-        low = 0
-        high = len(wordlist) - 1
+        fileobject = open("BinarySearch.txt", "r+")
+        list=["rohini\n","rajat\n","sai\n","akansha\n"]
+        fileobject.writelines(list)
+        fileobject.close()
 
         fileojbect = open("BinarySearch.txt", "r")
-        storefilecontent = []
-        storefilecontent = fileojbect.readlines()
-        # for i in line:
-        #     i.split(',')
-        #     print(i)
-        #     storefilecontent.append(i)
 
+        storefilecontent = fileojbect.read().splitlines()
+        fileojbect.close()
+        storefilecontent.sort()
 
         print(storefilecontent)
+        lower_limit = 0
+        upper_limit = len(storefilecontent) - 1
+
 
         key=input("Enter the Element you want to search:")
-        result=Utility().searchElement(key,low,high,storefilecontent)
+        Utility().searchElement(key,lower_limit,upper_limit,storefilecontent)
 
-        if result==-1:
-            print("The key element you have entered is not present in a list:")
-        else:
-            pass
+################################################################################################
 
 
-        fileojbect.close()
+    def insertionSortLogic(self,insertionlist,size):
+        print("list before sorting:")
+        print(insertionlist)
+        print("list after sorting:")
+        for i in range(1,size):
+            for j in range(i):
+                if insertionlist[i]<insertionlist[j]:
+                    temp= insertionlist[i]
+                    insertionlist[i]= insertionlist[j]
+                    insertionlist[j]=temp
+        print(insertionlist)
+##############################################################################################
+    def acceptIntegerElement(self, size):
+        storeint = []
+        for i in range(size):
+            word = int(input(""))
+            storeint.append(word)
+        return storeint
+
+    def insertionSortLogic(self,bubblesortlist,size):
+        print("list before sorting:")
+        print(bubblesortlist)
+        print("list after sorting:")
+        for i in range(0,size):
+            for j in range(i+1,size):
+                if bubblesortlist[i] > bubblesortlist[j]:
+                    temp = bubblesortlist[i]
+                    bubblesortlist[i] = bubblesortlist[j]
+                    bubblesortlist[j] = temp
+        print(bubblesortlist)
+##############################################################################################
+
+    def mergeSortLogic(self, mergesortlist):
+        while len(mergesortlist)!=0:
+            leftlist = []
+            rightlist = []
+            print(mergesortlist)
+            if len(mergesortlist) == 0 or len(mergesortlist) == 1:
+                print(mergesortlist)
+            else:
+                lower_limit = 0
+                higher_limit = len(mergesortlist) - 1
+                mid = (lower_limit + higher_limit) // 2
+
+            for i in range(mid + 1):
+                leftlist.append(mergesortlist[i])
+
+            for j in range(mid + 1, higher_limit + 1):
+                rightlist.append(mergesortlist[j])
+
+            print("left list:", leftlist)
+            print("right list:", rightlist)
+
+            # self.mergeSortLogic(leftlist)
+            # self.mergeSortLogic(rightlist)
+            Utility().sortlists(leftlist,rightlist)
+
+    def sortlists(self,leftlist,rightlist):
+        newmergelist=[]
+
+        i=0
+        j=0
+        while i<len(leftlist) and j<len(rightlist):
+            if leftlist[i]<rightlist[j]:
+                newmergelist.append(leftlist[i])
+                i=i+1
+            else:
+                newmergelist.append(rightlist[j])
+                j=j+1
+
+
+        while i<len(leftlist):
+            newmergelist.append(leftlist[i])
+            i=i+1
+
+        while j<len(rightlist):
+            newmergelist.append(leftlist[i])
+            j=j+1
+
+        print(newmergelist)
+
+
+
+
+
+
+
+
 
 
 
