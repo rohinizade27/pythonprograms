@@ -541,6 +541,53 @@ class Utility:
 
 ##########################################################################################
 
+    def calculateDayOfWeek(self,day,month,year):
+        y=year-(14-month)//12
+        x=y+y//4-y//100+y//400
+        m=month+12*((14-month)//12)-2
+        d=int((day+x+31*m//12)%7)
+
+        return d
+##########################################################################################
+
+    def convertTempToCelcius(self,fahrenheit_Temprature):
+        # (°F − 32) x 5 / 9 = °C
+        #
+        # (°C × 9 / 5) + 32 = °F
+        tocelius=(fahrenheit_Temprature-32)*5/9
+        print("Temprature in Celcius:",tocelius)
+
+    def convertTempTofahrenheit(self,celcius_temprature):
+        toFahrenheit=(celcius_temprature*9/5)+32
+        print("Temprature in Fahrenheit:",toFahrenheit)
+
+############################################################################################
+
+    def findMonthlyPayment(self,p,y,r):
+        n=12*y
+        r=r/(12*100)
+        payment=((p*r)/1-(1+r)**(-n))
+        print("Monthly payment is:",payment)
+
+##########################################################################################
+    def newtonSqrtLogic(self,c):
+        t=c
+        epsilon = 1e-15
+        while math.fabs(t - c//t) > epsilon*t:
+            t=(c//t+t)//2
+        print("value of t:",t)
+###########################################################################################
+    def decimalToBinary(self,Decimalnumber):
+        binarylist=[]
+        while Decimalnumber!=0:
+            r=Decimalnumber%2
+            binarylist.append(r)
+            Decimalnumber=Decimalnumber//2
+
+        binarylist.reverse()
+        print(binarylist)
+
+##########################################################################################
 
 
 
