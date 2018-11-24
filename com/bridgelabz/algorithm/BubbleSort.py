@@ -6,4 +6,4 @@ size=utility_obj.inputIntiger()
 bubblesortlist=[]
 print("Enter the string Elements:")
 bubblesortlist=utility_obj.acceptIntegerElement(size)
-utility_obj.insertionSortLogic(bubblesortlist,size)
+utility_obj.bubbleSortLogic(bubblesortlist,size)

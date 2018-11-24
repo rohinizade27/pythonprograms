@@ -406,7 +406,7 @@ class Utility:
             storeint.append(word)
         return storeint
 
-    def insertionSortLogic(self,bubblesortlist,size):
+    def bubbleSortLogic(self,bubblesortlist,size):
         print("list before sorting:")
         print(bubblesortlist)
         print("list after sorting:")
@@ -467,6 +467,91 @@ class Utility:
             j=j+1
 
         print(newmergelist)
+
+###########################################################################################
+    def vendingMachineLogic(self,cash,count_total_notes):
+        print("cash count:",count_total_notes)
+        print("remaining cash:",cash)
+
+        noteslist=[1000, 500, 100, 50, 10, 5, 2, 1]
+
+
+        while cash>=1 or cash !=1:
+
+            if cash >= noteslist[0]:
+                newcash = cash % 1000
+                thousand_count=cash//1000
+                count_total_notes = count_total_notes +thousand_count
+                print(thousand_count,": 1000's notes")
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+            elif cash >= noteslist[1]:
+                newcash = cash % 500
+                fivehundread_count=cash//500
+                count_total_notes = count_total_notes + fivehundread_count
+                print(fivehundread_count, ":500's notes")
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+            elif cash >= noteslist[2]:
+                newcash= cash % 100
+                hundread_count=(cash//100)
+                count_total_notes = count_total_notes + hundread_count
+                print(hundread_count, ":100's notes")
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+            elif cash >= noteslist[3]:
+                newcash = cash % 50
+                fifty_count=(cash//50)
+                count_total_notes = count_total_notes + fifty_count
+                print(fifty_count, ":50's notes")
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+            elif cash >= noteslist[4]:
+                newcash = cash % 10
+                ten_count=cash//10
+                count_total_notes = count_total_notes + ten_count
+                print(ten_count, ":10's notes")
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+            elif cash >= noteslist[5]:
+                newcash = cash % 5
+                five_count=cash//5
+                count_total_notes = count_total_notes + five_count
+                print(five_count, ":5's notes")
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+            elif cash >= noteslist[6]:
+                newcash = cash % 2
+                two_count=cash//2
+                count_total_notes = count_total_notes + two_count
+                print(two_count, ":2's notes")
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+            elif cash >= noteslist[7]:
+                newcash = cash % 1
+                one_count=cash//1
+                print(one_count, ":1's notes")
+                count_total_notes = count_total_notes + one_count
+                print(count_total_notes)
+                self.vendingMachineLogic(newcash,count_total_notes)
+
+
+            else:
+                pass
+
+##########################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
