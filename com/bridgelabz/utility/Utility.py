@@ -581,13 +581,66 @@ class Utility:
         binarylist=[]
         while Decimalnumber!=0:
             r=Decimalnumber%2
-            binarylist.append(r)
+            binarylist.append(str(r))
             Decimalnumber=Decimalnumber//2
 
         binarylist.reverse()
-        print(binarylist)
+        return binarylist
+
 
 ##########################################################################################
+
+    def swapBinary(self,binary_number):
+        print(binary_number)
+        binary_number=''.join(binary_number)
+        print("Binary number is:",binary_number)
+
+        binary_number = binary_number.zfill(8)
+        print("number_after_padding:",binary_number)
+
+        # total_length=8
+        # binary_number_legth=len(binary_number)
+        # zero_padding_number=total_length-binary_number_legth
+        # print("zero_padding_number:",zero_padding_number)
+
+        nibble_length = len(binary_number) // 2
+        print("nibble length:", nibble_length)
+        left_nibble = str(binary_number[0:nibble_length])
+        right_nibble = str(binary_number[nibble_length:])
+        print(left_nibble, right_nibble)
+        # for i in range(nibble_length):
+        #     for j in range(nibble_length):
+        temp = left_nibble
+        left_nibble = right_nibble
+        right_nibble = temp
+
+        print("left nibble:",left_nibble)
+        print("right nibble:",right_nibble)
+        binary_number = str(left_nibble + right_nibble)
+        print("binary number after swapping:", binary_number)
+
+
+        binary_number=binary_number.split(",")
+        # decimal_number=(binary_number[0][0]*pow(2,7))+(binary_number[0][1]*pow(2,6))+\
+        #              (binary_number[0][2] * pow(2,5))+(binary_number[0][2]*pow(2,4))+ \
+        #             (binary_number[0][0] * pow(2,3))+(binary_number[0][0]*pow(2,7))+
+        #print(binary_number[0][0])
+        e=7
+        decimal_number=0
+        for i in range(0,8):
+
+            decimal_number=decimal_number+(float(binary_number[0][i]*pow(2,e)))
+            e=e-1
+        print(decimal_number)
+
+
+
+
+
+
+
+
+
 
 
 
