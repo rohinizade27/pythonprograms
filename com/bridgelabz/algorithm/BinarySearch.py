@@ -7,6 +7,10 @@ utility_obj=Utility()
 # wordlist=[]
 # print("Enter the string Elements:")
 #wordlist=utility_obj.acceptListElement(size)
+starttime = utility_obj.getstartandstoptime()
 utility_obj.binarySearch()
+stoptime=utility_obj.getstartandstoptime()
+elapsetime=utility_obj.elapsedTime(starttime,stoptime)
+print("Elapsed time is:", elapsetime)
 
 

@@ -89,7 +89,7 @@ class Utility:
     def distinctTriplate(self,size,listelement):
         #print(listelement)
         #print(size)
-        newlist=[]
+        #newlist=[]
         flag=0
         for i in range(0,size-2):
             for j in range(i+1,size-1):
@@ -176,7 +176,7 @@ class Utility:
              while number % i == 0:
                  factors.append(i)
                  print(" ", i)
-                 number = number / i
+                 number = number // i
 
          for i in range(0, len(factors)):
              if factors[i] == 2:
@@ -220,10 +220,10 @@ class Utility:
         return elapsed_time
 
 ######################################################################################
-    def computDelta(self,a,b,c):
+    def computDelta(self, a, b, c):
         return b * b - 4 * a * c
 
-    def findroots(self,a,b,c,deltaresult):
+    def findroots(self, a, b, deltaresult):
         print("the roots are real and different")
         root1 = (-b + math.sqrt(deltaresult)) / (2 * a)
         root2 = (-b - math.sqrt(deltaresult)) / (2 * a)
@@ -231,11 +231,17 @@ class Utility:
         print("root2:",root2)
 
 #####################################################################################
+    # def permutationLogic(self,string,currentIndex):
+    #     if currentIndex == len(string)):
+    #         for i in range(len(string)):
+
+
                             # Algorithm Programs
 #####################################################################################
+
     def anagramLogic(self,string1,string2):
-         string1=string1.replace(" ","" )
-         string2=string2.replace(" ","")
+         string1=string1.replace(" ", "" )
+         string2=string2.replace(" ", "")
 
          lowercasestring1 = string1.lower()
          lowercasestring2 = string2.lower()
@@ -252,12 +258,12 @@ class Utility:
 
 
          if count==len(str1_removeduplicates):
-             print(string1,"and",string2," are an Anagram")
+             print(string1, "and", string2, " are an Anagram")
          else:
-             print(string1,"and",string2," are an not Anagram")
+             print(string1, "and", string2, " are an not Anagram")
 
 ######################################################################################
-    def findPrimeNumber(self,lower_limit,upper_limit):
+    def findPrimeNumber(self, lower_limit, upper_limit):
          storeprime=[]
 
          i=lower_limit
@@ -437,11 +443,11 @@ class Utility:
                 for j in range(mid + 1, higher_limit + 1):
                      rightlist.append(mergesortlist[j])
 
-                print("left list:", leftlist)
-                print("right list:", rightlist)
+              #  print("left list:", leftlist)
+               # print("right list:", rightlist)
 
-            self.mergeSortLogic(leftlist)
-            self.mergeSortLogic(rightlist)
+           # self.mergeSortLogic(leftlist)
+            #self.mergeSortLogic(rightlist)
             Utility().sortlists(leftlist,rightlist)
 
     def sortlists(self,leftlist,rightlist):
@@ -621,22 +627,29 @@ class Utility:
 
 
         binary_number=binary_number.split(",")
-        # decimal_number=(binary_number[0][0]*pow(2,7))+(binary_number[0][1]*pow(2,6))+\
-        #              (binary_number[0][2] * pow(2,5))+(binary_number[0][2]*pow(2,4))+ \
-        #             (binary_number[0][0] * pow(2,3))+(binary_number[0][0]*pow(2,7))+
-        #print(binary_number[0][0])
-        e=7
-        decimal_number=0
-        for i in range(0,8):
 
-            decimal_number=decimal_number+(float(binary_number[0][i]*pow(2,e)))
-            e=e-1
-        print(decimal_number)
+        # e=7
+        # decimal_number=''
+        # for i in range(8):
+        #
+        #     decimal_number=decimal_number+str((binary_number[0][i]*pow(2,e)))
+        #     e=e-1
+        # print(decimal_number)
+        # decimal = 0
+        # i = 1
+        # n=[]
+        # n=binary_number
+        # while n != 0:
+        #     r = n % 2
+        #     decimal= decimal + r * i
+        #     n = n // 10
+        #     i = i*2
+        #     print(decimal)
 
+#####################################################################################
+                    #Data structure Programs
 
-
-
-
+#####################################################################################
 
 
 
