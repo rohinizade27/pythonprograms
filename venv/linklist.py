@@ -63,9 +63,10 @@ class Linkedlist:
             pass
 
     def findLength(self):
-        list_length=0
+
         traverse_pointer = self.head
-        while traverse_pointer.next != None:
+        list_length = 0
+        while traverse_pointer.next!= None:
             list_length+=1
         print("link list length:",list_length)
 
@@ -78,8 +79,9 @@ class Linkedlist:
 
 
 link_list=Linkedlist()
-link_list.findLength()
 link_list.isempty()
+#link_list.findLength()
+
 link_list.append(10)
 # link_list.append(4)
 # link_list.append(10)
@@ -87,7 +89,7 @@ link_list.prepend(6)
 link_list.prepend(8)
 link_list.prepend(9)
 link_list.searchElement(6)
-link_list.insert_after_node(6, 9)
+#link_list.insert_after_node(6, 9)
 
 link_list.printlinklist()
 
