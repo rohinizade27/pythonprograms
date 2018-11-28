@@ -130,33 +130,117 @@ link_list=Linkedlist()
 
 #link_list.getindexitem(1)
 
-fileobject = open("inputword.txt", "w+")
-list=["rohini ","rajat ","sai ","akansha"]
-fileobject.writelines(list)
-fileobject.close()
+# fileobject = open("inputword.txt", "w+")
+# list=["rohini ","rajat ","sai ","akansha"]
+# fileobject.writelines(list)
+# fileobject.close()
+#
+# fileojbect = open("inputword.txt", "r")
+#
+# storefilecontent = fileojbect.read()
+# storefilecontent=str(storefilecontent).split()
+# print(storefilecontent)
+# fileojbect.close()
+#
+# for i in range(len(list)):
+#     link_list.append(list[i])
+#
+# link_list.display()
+#
+# key=input("Enter the Element you want to search:")
+# result=link_list.searchElement(key)
+# print(result)
+#
+# if result==False:
+#     link_list.append(key)
+# else:
+#     link_list.pop(key)
+#
+# link_list.display()
 
-fileojbect = open("inputword.txt", "r")
+###########################################################################################
 
-storefilecontent = fileojbect.read()
-storefilecontent=str(storefilecontent).split()
-fileojbect.close()
+class OrderedLinkList:
+    def __init__(self):
+        self.head=Node()
 
-for i in range(len(list)):
-    link_list.append(list[i])
+    def append(self,data):
+        new_node = Node(data)
 
-link_list.display()
+        traverse_node = self.head
 
-key=input("Enter the Element you want to search:")
-result=link_list.searchElement(key)
-print(result)
+        if traverse_node is None:
+            new_node.next = traverse_node
+            traverse_node = new_node
 
-if result==False:
-    link_list.append(key)
-else:
-    link_list.pop(key)
 
-link_list.display()
+        if traverse_node.data >= new_node.data:
+            new_node.next =traverse_node
+            traverse_node= new_node
 
+
+        else:
+
+            while traverse_node.next != None and traverse_node.next.data < new_node.data:
+                traverse_node.next = new_node
+                traverse_node = traverse_node.next
+            new_node.next = traverse_node.next
+            traverse_node.next = new_node
+
+
+    def display(self):
+        elements=[]
+        traverse_node=self.head
+        while traverse_node.next!=None:
+            traverse_node=traverse_node.next
+            elements.append(traverse_node.data)
+        print(elements)
+
+
+
+#
+# ordered_llist=OrderedLinkList()
+# ordered_llist.append(4)
+# ordered_llist.append(3)
+# ordered_llist.append(1)
+# ordered_llist.append(-1)
+#
+# ordered_llist.display()
+
+##################################################################################################
+
+class Stack:
+    def __init__(self):
+        stackelement=[]
+        self.stack=stackelement
+        self.top=-1
+        self.stackMaxsize=5
+
+    def push(self,data):
+        if self.top>=self.stackMaxsize:
+            print("Overflow!!! no enough space ")
+        else:
+            self.top=self.top+1
+            self.stack[self. top]=data
+
+
+    def pop(self):
+        if self.top==-1:
+            print("Underflow!!! no items in stack")
+        else:
+            temp=self.stack[self.top]
+            self.top-=1
+            return temp
+
+    def display(self):
+        print(self.stack)
+
+stack_obj=Stack()
+stack_obj.push(10)
+
+stack_obj.push(41)
+print(stack_obj.pop())
+stack_obj.display()
 
 
 
