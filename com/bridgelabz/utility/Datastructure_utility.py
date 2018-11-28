@@ -210,40 +210,68 @@ class OrderedLinkList:
 ##################################################################################################
 
 class Stack:
+
     def __init__(self):
-        stackelement=[]
-        self.stack=stackelement
-        self.top=-1
+
+        self.stack=list()
+        self.top= -1
         self.stackMaxsize=5
 
     def push(self,data):
-        if self.top>=self.stackMaxsize:
+        if self.top>self.stackMaxsize:
             print("Overflow!!! no enough space ")
         else:
-            self.top=self.top+1
-            self.stack[self. top]=data
+            tp=self.top
+            tp+=1
+            self.stack.insert(tp,data)
+            #self.stack[tp]=data
+
 
 
     def pop(self):
+        print(self.top)
         if self.top==-1:
             print("Underflow!!! no items in stack")
         else:
-            temp=self.stack[self.top]
-            self.top-=1
+            tp = self.top
+            temp=self.stack[tp]
+            self.stack.pop()
+            tp-=1
             return temp
+
+    def isempty(self):
+        if self.top==-1:
+            #print("Underflow!!! no items in stack")
+            return True
+
 
     def display(self):
         print(self.stack)
 
 stack_obj=Stack()
 stack_obj.push(10)
-
 stack_obj.push(41)
-print(stack_obj.pop())
+stack_obj.push(90)
+
+stack_obj.pop()
+# print(stack_obj.pop())
 stack_obj.display()
 
-
-
-
+# expression=input("Enter the Expression:")
+#
+# for i in range(len(expression)):
+#     if expression[i]=='(':
+#         stack_obj.push(i)
+#
+#     elif expression[i]==')':
+#         stack_obj.pop()
+#
+# result=stack_obj.isempty()
+# print(result)
+# if result==True:
+#     print("Expression is blanced..!!!")
+# else:
+#     print("expression is not balanced..!!")
+#
 
 
