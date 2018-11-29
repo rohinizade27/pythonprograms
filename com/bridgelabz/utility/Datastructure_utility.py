@@ -339,41 +339,226 @@ class Queue:
 
 
 queue_obj=Queue()
-# queue_obj.insertElement(10)
-# queue_obj.insertElement(20)
-# queue_obj.insertElement(30)
-# queue_obj.insertElement(45)
-# queue_obj.insertElement(65)
-#queue_obj.insertElement(90)
-# queue_obj.insertElement(90)
-# queue_obj.deleteElement()
-# queue_obj.deleteElement()
-
-#queue_obj.deleteElement()
-#queue_obj.display()
-
-available_balance=500000
-maxlen=int(input("How may persons are there in a Queue?"))
-print("people in queue:")
-for i in range(maxlen):
-    person_id=input("please enter the id of person:")
-    queue_obj.insertElement(person_id,maxlen)
-
-
-for i in range(maxlen):
-    queue_obj.display()
-    print("___You have two choices___")
-    print("1. withdraw Cash")
-    print("2. Deposit cash")
-    ch = int(input("Enter your choice:"))
-    if ch == 1:
-        queue_obj.withdraw(available_balance)
-    elif ch == 2:
-        queue_obj.deposit(available_balance)
-    else:
-        print("!!..Invalid choice..!!")
+# # queue_obj.insertElement(10)
+# # queue_obj.insertElement(20)
+# # queue_obj.insertElement(30)
+# # queue_obj.insertElement(45)
+# # queue_obj.insertElement(65)
+# #queue_obj.insertElement(90)
+# # queue_obj.insertElement(90)
+# # queue_obj.deleteElement()
+# # queue_obj.deleteElement()
+#
+# #queue_obj.deleteElement()
+# #queue_obj.display()
+#
+# available_balance=500000
+# maxlen=int(input("How may persons are there in a Queue?"))
+# print("people in queue:")
+# for i in range(maxlen):
+#     person_id=input("please enter the id of person:")
+#     queue_obj.insertElement(person_id,maxlen)
+#
+#
+# for i in range(maxlen):
+#     queue_obj.display()
+#     print("___You have two choices___")
+#     print("1. withdraw Cash")
+#     print("2. Deposit cash")
+#     ch = int(input("Enter your choice:"))
+#     if ch == 1:
+#         queue_obj.withdraw(available_balance)
+#     elif ch == 2:
+#         queue_obj.deposit(available_balance)
+#     else:
+#         print("!!..Invalid choice..!!")
 
 ###########################################################################################
+class checkpalindrome:
+    def __init__(self):
+        pass
+
+    def palindromeLogic(self,string):
+        stringlist = []
+        for i in range(len(string)):
+            stringlist.append(string[i])
+
+        for i in range(len(string)):
+            dequeue_obj.insertElementAtRear(string[i], len(string))
+
+        storelement=dequeue_obj.dequeue
+
+        reverselist = []
+        for j in range(len(storelement)):
+            element=dequeue_obj.deleteElementfromRear()
+           #print(element)
+            reverselist.append(element)
+        print("original string:",stringlist)
+        print("reverse string:",reverselist)
+        if stringlist == reverselist:
+            print("string is palindrome")
+        else:
+            print("string is not palindrome")
+
+
+#############################################################################
+class Dequeue:
+    def __init__(self):
+        self.dequeue=list()
+
+
+
+    def insertElementAtRear(self,data,maxlen):
+        rear=len(self.dequeue)
+        rear=rear+1
+
+        #print(rear)
+        if rear>maxlen:
+            print("Overflow!!..no enough space..!!")
+            exit()
+        else:
+            self.dequeue.append(data)
+
+    def insertElementAtFront(self,data,maxlen):
+        rear = len(self.dequeue)
+        rear = rear + 1
+
+        if rear>maxlen:
+            print("Overflow!!..no enough space..!!")
+            exit()
+        else:
+            self.dequeue.insert(0,data)
+
+
+
+    def deleteElementfromfront(self):
+        if dequeue_obj.isEmpty():
+            print("Underflow!!..No Elements on stack!!")
+            exit()
+        else:
+            self.dequeue.pop(0)
+
+    def deleteElementfromRear(self):
+        rear = len(self.dequeue)
+        rear = rear-1
+        #print(rear)
+        if dequeue_obj.isEmpty():
+            print("Underflow!!..No Elements on stack!!")
+            exit()
+        else:
+            return self.dequeue.pop(rear)
+
+
+
+    def isEmpty(self):
+        if self.dequeue==[]:
+            return True
+
+    def display(self):
+        print(self.dequeue)
+
+# maxlen=5
+# dequeue_obj=Dequeue()
+# dequeue_obj.insertElementAtRear(10,maxlen)
+# dequeue_obj.insertElementAtRear(11,maxlen)
+# dequeue_obj.insertElementAtFront(21,maxlen)
+# dequeue_obj.insertElementAtFront(26,maxlen)
+# dequeue_obj.deleteElementfromfront()
+# dequeue_obj.deleteElementfromRear()
+# dequeue_obj.insertElementAtFront(28,maxlen)
+# dequeue_obj.deleteElementfromRear()
+#dequeue_obj=Dequeue()
+
+##############################################################################
+class Anagram:
+
+
+
+    def anagramLogic(self,string1,string2):
+         primelist = []
+         string1=string1.replace(" ", "" )
+         string2=string2.replace(" ", "")
+
+         lowercasestring1 = string1.lower()
+         lowercasestring2 = string2.lower()
+
+         str1_removeduplicates="".join(set(lowercasestring1))
+         str2_removeduplicates = "".join(set(lowercasestring2))
+
+         count=0
+         if len( str1_removeduplicates)==len(str2_removeduplicates):
+             for i in range(len(str1_removeduplicates)):
+                 for j in range(len(str1_removeduplicates)):
+                     if str1_removeduplicates[i]== str2_removeduplicates[j]:
+                         count=count+1
+
+
+         if count==len(str1_removeduplicates):
+
+
+             primelist.append(string1)
+             primelist.append(string2)
+             print(primelist)
+             # # print(string1, "and", string2, " are an Anagram")
+         # else:
+         #     # print(string1, "and", string2, " are an not Anagram")
+         #     pass
+
+###################################################################################
+class StackByLink:
+
+    def __init__(self):
+        self.head=Node()
+
+    def push(self, data):
+        new_node = Node(data)
+        traverse= self.head
+        while traverse.next != None:
+            traverse = traverse.next
+        traverse.next = new_node
+
+
+
+    def display(self):
+        elements=[]
+        traverse=self.head
+        while traverse.next!=None:
+            traverse=traverse.next
+            elements.append(traverse.data)
+        print(elements)
+
+
+    def pop(self):
+        traverse=self.head
+
+        if traverse.next==None:
+            print("Underflow..!!")
+
+
+        while traverse.next != None:
+            t=traverse.next
+            if t.next ==None:
+                traverse.next=None
+                return t.data
+            traverse=traverse.next
+
+    def isUnderflow(self):
+        traverse = self.head
+        if traverse.next == None:
+            return True
+        else:
+            return False
+
+
+stackllist=StackByLink()
+# stackllist.push(10)
+# stackllist.push(20)
+# stackllist.pop()
+# stackllist.pop()
+# stackllist.pop()
+# print(stackllist.isUnderflow())
+# stackllist.display()
+
 
 
 
