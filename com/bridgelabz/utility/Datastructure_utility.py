@@ -210,15 +210,16 @@ class OrderedLinkList:
 ##################################################################################################
 
 class Stack:
+    top = 0
+    stackMaxsize = 10
 
     def __init__(self):
 
         self.stack=list()
-        self.top= -1
-        self.stackMaxsize=5
+
 
     def push(self,data):
-        if self.top>self.stackMaxsize:
+        if len(self.stack)>self.stackMaxsize:
             print("Overflow!!! no enough space ")
         else:
             tp=self.top
@@ -229,8 +230,8 @@ class Stack:
 
 
     def pop(self):
-        print(self.top)
-        if self.top==-1:
+
+        if self.stack==[]:
             print("Underflow!!! no items in stack")
         else:
             tp = self.top
@@ -240,38 +241,146 @@ class Stack:
             return temp
 
     def isempty(self):
-        if self.top==-1:
-            #print("Underflow!!! no items in stack")
+        if self.stack==[]:
+
             return True
 
 
     def display(self):
         print(self.stack)
 
-stack_obj=Stack()
-stack_obj.push(10)
-stack_obj.push(41)
-stack_obj.push(90)
-
-stack_obj.pop()
-# print(stack_obj.pop())
-stack_obj.display()
-
-# expression=input("Enter the Expression:")
+# stack_obj=Stack()
+# # stack_obj.push(10)
+# # stack_obj.push(41)
+# # stack_obj.push(90)
+# #
+# # stack_obj.pop()
+# # stack_obj.pop()
+# # stack_obj.pop()
+# # stack_obj.pop()
+# # stack_obj.push(20)
+# # stack_obj.display()
 #
+# expression=input("Enter the Expression:")
+# balance=True
 # for i in range(len(expression)):
 #     if expression[i]=='(':
 #         stack_obj.push(i)
 #
-#     elif expression[i]==')':
-#         stack_obj.pop()
+#     else:
+#         if stack_obj.isempty():
+#             balance=False
+#         else:
+#             if expression[i]==')':
+#                 stack_obj.pop()
 #
 # result=stack_obj.isempty()
-# print(result)
-# if result==True:
+#
+# if result==True and balance==True:
 #     print("Expression is blanced..!!!")
 # else:
 #     print("expression is not balanced..!!")
-#
+
+##########################################################################################
+class Queue:
+    def __init__(self):
+        self.queue=list()
+
+
+
+    def insertElement(self,data,maxlen):
+        rear=len(self.queue)
+        rear=rear+1
+
+        #print(rear)
+        if rear>maxlen:
+            print("Overflow!!..no enough space..!!")
+            exit()
+        else:
+            self.queue.append(data)
+
+    def deleteElement(self):
+        if queue_obj.isEmpty():
+            print("Underflow!!..No Elements on stack!!")
+            exit()
+        else:
+            self.queue.pop(0)
+
+    def isEmpty(self):
+        if self.queue==[]:
+            return True
+
+    def display(self):
+        print(self.queue)
+
+    def withdraw(self,available_balance):
+        withdraw_cash = int(input("please Enter the withdraw amount:"))
+        if available_balance >= withdraw_cash:
+            available_balance -= withdraw_cash
+            print("Available Balance:", available_balance)
+            print("Withdraw Amount:", withdraw_cash)
+            queue_obj.deleteElement()
+            #queue_obj.display()
+
+        else:
+            print("SORRY !!! Insufficient Balance..!!")
+            queue_obj.deleteElement()
+            #queue_obj.display()
+
+    def deposit(self,available_balance):
+        deposit_cash=int(input("Enter the deposit amount:"))
+        available_balance+=deposit_cash
+        print("Available Balance:", available_balance)
+        print("Withdraw Amount:", deposit_cash)
+        queue_obj.deleteElement()
+        queue_obj.display()
+
+
+
+
+queue_obj=Queue()
+# queue_obj.insertElement(10)
+# queue_obj.insertElement(20)
+# queue_obj.insertElement(30)
+# queue_obj.insertElement(45)
+# queue_obj.insertElement(65)
+#queue_obj.insertElement(90)
+# queue_obj.insertElement(90)
+# queue_obj.deleteElement()
+# queue_obj.deleteElement()
+
+#queue_obj.deleteElement()
+#queue_obj.display()
+
+available_balance=500000
+maxlen=int(input("How may persons are there in a Queue?"))
+print("people in queue:")
+for i in range(maxlen):
+    person_id=input("please enter the id of person:")
+    queue_obj.insertElement(person_id,maxlen)
+
+
+for i in range(maxlen):
+    queue_obj.display()
+    print("___You have two choices___")
+    print("1. withdraw Cash")
+    print("2. Deposit cash")
+    ch = int(input("Enter your choice:"))
+    if ch == 1:
+        queue_obj.withdraw(available_balance)
+    elif ch == 2:
+        queue_obj.deposit(available_balance)
+    else:
+        print("!!..Invalid choice..!!")
+
+###########################################################################################
+
+
+
+
+
+
+
+
 
 
