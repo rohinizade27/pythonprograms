@@ -719,7 +719,25 @@ class TwoDArray:
 twoDarray_obj=TwoDArray()
 ##############################################################################
 class BinarySearchTree:
-    def countBinaryTree(self,n,no_of_nodes,nodelist):
+    def factorial(self,no_of_nodes):
+        fact=1
+        for i in range(no_of_nodes):
+            fact=fact*i
+        return fact
+
+    def countBinaryTree(self,no_of_nodes):
+        r1=2*no_of_nodes
+        result1=self.factorial(r1)
+        r2=no_of_nodes+1
+        result2=self.factorial(r2)
+        r3=no_of_nodes
+        result3=self.factorial(r3)
+
+        possiblebinarytrees=(r1//r2*r3)
+        print(possiblebinarytrees)
+
+
+
 
 
 
