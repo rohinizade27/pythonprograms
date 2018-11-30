@@ -1,3 +1,5 @@
+import numpy as np
+
 class Node:
     def __init__(self,data=None):
         self.data=data
@@ -530,6 +532,20 @@ class Anagram:
         #stackllist.display()
         print(popedElement)
 
+    def QueueOperationOnAnagramlist(self,uniquelist):
+        deletedElement=[]
+        print("Anagram number after inserted into queue...")
+        for i in range(len(uniquelist)):
+            q_linklist_obj.insertElementAtRear(uniquelist[i])
+        q_linklist_obj.display()
+
+        print("Anagram number after deleted from queue...")
+        for i in range(len(uniquelist)+1):
+            item = q_linklist_obj.removeElementFromFront()
+            deletedElement.append(item)
+        # stackllist.display()
+        print(deletedElement)
+
 
 
 ###################################################################################
@@ -587,6 +603,137 @@ stackllist=StackByLink()
 # print(stackllist.isUnderflow())
 # stackllist.display()
 ############################################################################################
+class QueeByLinklist:
+    def __init__(self):
+        self.head=Node()
+
+    def insertElementAtRear(self, data):
+        new_node = Node(data)
+        traverse= self.head
+        while traverse.next != None:
+            traverse = traverse.next
+        traverse.next = new_node
+
+    def removeElementFromFront(self):
+        if self.head is None:
+            return None
+
+        else:
+            pop_node= self.head.data
+            self.head = self.head.next
+            return pop_node
+
+    def display(self):
+        elements=[]
+        traverse=self.head
+        while traverse.next!=None:
+            traverse=traverse.next
+            elements.append(traverse.data)
+        print(elements)
+
+q_linklist_obj=QueeByLinklist()
+# q_linklist_obj.insertElementAtRear(10)
+# q_linklist_obj.insertElementAtRear(20)
+# q_linklist_obj.insertElementAtRear(30)
+#
+# q_linklist_obj.removeElementFromFront()
+# q_linklist_obj.insertElementAtRear(10)
+# q_linklist_obj.removeElementFromFront()
+# q_linklist_obj.display()
+################################################################################
+class TwoDArray:
+
+
+    def primenslots(self, primenumber):
+        row1=[]
+        row2=[]
+        row3=[]
+        row4=[]
+        row5=[]
+        row6=[]
+        row7=[]
+        row8=[]
+        row9=[]
+        row10=[]
+        matrix=[]
+
+        for i in range(len(primenumber)):
+            if primenumber[i]<=100:
+                row1.append(primenumber[i])
+            elif primenumber[i]<=200:
+                row2.append(primenumber[i])
+            elif primenumber[i]<=300:
+                row3.append(primenumber[i])
+            elif primenumber[i]<=400:
+                row4.append(primenumber[i])
+            elif primenumber[i]<=500:
+                row5.append(primenumber[i])
+            elif primenumber[i]<=600:
+                row6.append(primenumber[i])
+            elif primenumber[i]<=700:
+                row7.append(primenumber[i])
+            elif primenumber[i]<=800:
+                row8.append(primenumber[i])
+            elif primenumber[i]<=900:
+                row9.append(primenumber[i])
+            elif primenumber[i]<=1000:
+                row10.append(primenumber[i])
+            else:
+                pass
+        matrix.append(row1)
+        matrix.append(row2)
+        matrix.append(row3)
+        matrix.append(row4)
+        matrix.append(row5)
+        matrix.append(row6)
+        matrix.append(row7)
+        matrix.append(row8)
+        matrix.append(row9)
+        matrix.append(row10)
+        #print(matrix)
+
+        print("Two D matrix of prime range 0-1000")
+        for row in matrix:
+            for element in row:
+                print(element,end=" ")
+            print()
+
+
+        # #slot=10
+        # #while slot !=0:
+        #     matrix = []
+        #     row = []
+        #     min = 0
+        #     max = len(primenumber)
+        #     r=100
+        #     for i in range(0,10):
+        #
+        #         for j in range(min,max):
+        #             # min=min+100
+        #             if primenumber[j]<=r:
+        #                 row.append(primenumber[j])
+        #         matrix.append(row)
+        #         r=r+100
+        #     #slot = slot + 1
+        #     print(matrix)
+twoDarray_obj=TwoDArray()
+##############################################################################
+class BinarySearchTree:
+    def countBinaryTree(self,n,no_of_nodes,nodelist):
+
+
+
+
+
+bst_obj=BinarySearchTree()
+
+
+
+
+
+
+
+
 
 
 

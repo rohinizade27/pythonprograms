@@ -26,8 +26,6 @@ for i in range(len(primenumber)):
 uniquelist=anagram_obj.unique_list(storeanagram)
 uniquelist = list(map(int, uniquelist))
 sortedlist=uniquelist.sort(reverse=False)
-#print(uniquelist)
-
 anagram_obj.stackOperationOnAnagramlist(uniquelist)
 
 
