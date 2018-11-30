@@ -257,7 +257,7 @@ class Utility:
                          count=count+1
 
 
-         if count==len(str1_removeduplicates):
+         if count==len(str1_removeduplicates) or string1==string2:
              print(string1, "and", string2, " are an Anagram")
          else:
              print(string1, "and", string2, " are an not Anagram")

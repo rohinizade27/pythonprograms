@@ -472,10 +472,8 @@ class Dequeue:
 ##############################################################################
 class Anagram:
 
+    def anagramLogic(self,string1,string2,anagramlist):
 
-
-    def anagramLogic(self,string1,string2):
-         primelist = []
          string1=string1.replace(" ", "" )
          string2=string2.replace(" ", "")
 
@@ -493,16 +491,46 @@ class Anagram:
                          count=count+1
 
 
-         if count==len(str1_removeduplicates):
+         if count==len(str1_removeduplicates) or string1==string2:
 
 
-             primelist.append(string1)
-             primelist.append(string2)
-             print(primelist)
+
+             anagramlist.append(string2)
+
+
+         else:
+             pass
+
+         return anagramlist
              # # print(string1, "and", string2, " are an Anagram")
          # else:
          #     # print(string1, "and", string2, " are an not Anagram")
          #     pass
+
+    def unique_list(self,storeanagram):
+        uniq_list = []
+        uniq_set = set()
+        for item in storeanagram:
+            if item not in uniq_set:
+                uniq_list.append(item)
+                uniq_set.add(item)
+        return uniq_list
+
+    def stackOperationOnAnagramlist(self,uniquelist):
+        popedElement=[]
+        print("Anagram number after pushed it into stack...")
+        for i in range(len(uniquelist)):
+            stackllist.push(uniquelist[i])
+        stackllist.display()
+
+        print("Anagram number after poped it from stack...")
+        for i in range(len(uniquelist)):
+            item=stackllist.pop()
+            popedElement.append(item)
+        #stackllist.display()
+        print(popedElement)
+
+
 
 ###################################################################################
 class StackByLink:
@@ -558,7 +586,7 @@ stackllist=StackByLink()
 # stackllist.pop()
 # print(stackllist.isUnderflow())
 # stackllist.display()
-
+############################################################################################
 
 
 
