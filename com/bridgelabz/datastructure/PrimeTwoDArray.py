@@ -10,11 +10,4 @@ upper_limit=utility_obj.inputIntiger()
 primenumber=[]
 primenumber=utility_obj.findPrimeNumber(lower_limit,upper_limit)
 
-# print("Enter the number of rows:")
-# rows=utility_obj.inputIntiger()
-# print("Enter the number of column:")
-# columns=utility_obj.inputIntiger()
-# utility_obj.printArray(rows,columns)
-
-
 twoDarray_obj.primenslots(primenumber)

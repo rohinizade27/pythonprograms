@@ -1,74 +1,76 @@
 import numpy as np
 import math
 
+
 class Node:
-    def __init__(self,data=None):
-        self.data=data
-        self.next=None
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
 
 class Linkedlist:
     def __init__(self):
-        self.head=Node()
+        self.head = Node()
 
-    def append(self,data):
-        new_node=Node(data)
-        cur=self.head
-        while cur.next!=None:
-            cur=cur.next
-        cur.next=new_node
+    def append(self, data):
+        new_node = Node(data)
+        cur = self.head
+        while cur.next != None:
+            cur = cur.next
+        cur.next = new_node
 
     def length(self):
-        cur=self.head
-        total=0
-        while cur.next!=None:
-            total+=1
-            cur=cur.next
-        return  total
+        cur = self.head
+        total = 0
+        while cur.next != None:
+            total += 1
+            cur = cur.next
+        return total
 
     def display(self):
-        elements=[]
-        cur_node=self.head
-        while cur_node.next!=None:
-            cur_node=cur_node.next
+        elements = []
+        cur_node = self.head
+        while cur_node.next != None:
+            cur_node = cur_node.next
             elements.append(cur_node.data)
         print(elements)
 
-    def getindexitem(self,index):
-        if index>=self.length():
+    def getindexitem(self, index):
+        if index >= self.length():
             print("index out of range")
             return None
 
-        cur_index=0
-        cur_node=self.head
-        while cur_node.next!=None:
-            cur_node=cur_node.next
-            if cur_index==index:
-                print("Element at",index,"index is:",cur_node.data)
-            cur_index+=1
+        cur_index = 0
+        cur_node = self.head
+        while cur_node.next != None:
+            cur_node = cur_node.next
+            if cur_index == index:
+                print("Element at", index, "index is:", cur_node.data)
+            cur_index += 1
 
-    def remove(self,index):
-        if index>=self.length():
+    def remove(self, index):
+        if index >= self.length():
             print("index out of range")
             return
-        cur_index=0
-        cur_node=self.head
+        cur_index = 0
+        cur_node = self.head
         while cur_node.next != None:
-            last_node=cur_node
-            cur_node=cur_node.next
-            if cur_index==index:
-                last_node.next=cur_node.next
+            last_node = cur_node
+            cur_node = cur_node.next
+            if cur_index == index:
+                last_node.next = cur_node.next
                 return
-            cur_index+=1
+            cur_index += 1
 
     def isempty(self):
-        traverse=self.head
+        traverse = self.head
 
         if traverse.next == None:
             print("link list Empty!!!")
         else:
             print("list is not Empty!!!")
 
-    def additematfront(self,data):
+    def additematfront(self, data):
         new_node = Node(data)
 
         new_node.next = self.head
@@ -76,7 +78,7 @@ class Linkedlist:
 
     def searchElement(self, key):
         traverse_pointer = self.head
-        while traverse_pointer.next!=None:
+        while traverse_pointer.next != None:
             # print(key)
             # print(traverse_pointer.data)
             if traverse_pointer.data == key:
@@ -87,26 +89,18 @@ class Linkedlist:
             return True
         return False
 
-    def pop(self,data):
-        cur_node=self.head
+    def pop(self, data):
+        cur_node = self.head
         while cur_node.next != None:
-            last_node=cur_node
-            cur_node=cur_node.next
-            if cur_node.data==data:
-                last_node.next=cur_node.next
+            last_node = cur_node
+            cur_node = cur_node.next
+            if cur_node.data == data:
+                last_node.next = cur_node.next
                 return
         return
 
 
-
-
-
-
-
-
-link_list=Linkedlist()
-
-
+link_list = Linkedlist()
 
 
 # # link_list.isempty()
@@ -128,10 +122,10 @@ link_list=Linkedlist()
 # print(link_list.searchElement(4))
 
 
-#link_list.display()
+# link_list.display()
 
 
-#link_list.getindexitem(1)
+# link_list.getindexitem(1)
 
 # fileobject = open("inputword.txt", "w+")
 # list=["rohini ","rajat ","sai ","akansha"]
@@ -165,9 +159,9 @@ link_list=Linkedlist()
 
 class OrderedLinkList:
     def __init__(self):
-        self.head=Node()
+        self.head = Node()
 
-    def append(self,data):
+    def append(self, data):
         new_node = Node(data)
 
         traverse_node = self.head
@@ -176,10 +170,9 @@ class OrderedLinkList:
             new_node.next = traverse_node
             traverse_node = new_node
 
-
         if traverse_node.data >= new_node.data:
-            new_node.next =traverse_node
-            traverse_node= new_node
+            new_node.next = traverse_node
+            traverse_node = new_node
 
 
         else:
@@ -190,15 +183,13 @@ class OrderedLinkList:
             new_node.next = traverse_node.next
             traverse_node.next = new_node
 
-
     def display(self):
-        elements=[]
-        traverse_node=self.head
-        while traverse_node.next!=None:
-            traverse_node=traverse_node.next
+        elements = []
+        traverse_node = self.head
+        while traverse_node.next != None:
+            traverse_node = traverse_node.next
             elements.append(traverse_node.data)
         print(elements)
-
 
 
 #
@@ -218,39 +209,35 @@ class Stack:
 
     def __init__(self):
 
-        self.stack=list()
+        self.stack = list()
 
-
-    def push(self,data):
-        if len(self.stack)>self.stackMaxsize:
+    def push(self, data):
+        if len(self.stack) > self.stackMaxsize:
             print("Overflow!!! no enough space ")
         else:
-            tp=self.top
-            tp+=1
-            self.stack.insert(tp,data)
-            #self.stack[tp]=data
-
-
+            tp = self.top
+            tp += 1
+            self.stack.insert(tp, data)
+            # self.stack[tp]=data
 
     def pop(self):
 
-        if self.stack==[]:
+        if self.stack == []:
             print("Underflow!!! no items in stack")
         else:
             tp = self.top
-            temp=self.stack[tp]
+            temp = self.stack[tp]
             self.stack.pop()
-            tp-=1
+            tp -= 1
             return temp
 
     def isempty(self):
-        if self.stack==[]:
-
+        if self.stack == []:
             return True
-
 
     def display(self):
         print(self.stack)
+
 
 # stack_obj=Stack()
 # # stack_obj.push(10)
@@ -287,16 +274,14 @@ class Stack:
 ##########################################################################################
 class Queue:
     def __init__(self):
-        self.queue=list()
+        self.queue = list()
 
+    def insertElement(self, data, maxlen):
+        rear = len(self.queue)
+        rear = rear + 1
 
-
-    def insertElement(self,data,maxlen):
-        rear=len(self.queue)
-        rear=rear+1
-
-        #print(rear)
-        if rear>maxlen:
+        # print(rear)
+        if rear > maxlen:
             print("Overflow!!..no enough space..!!")
             exit()
         else:
@@ -310,38 +295,38 @@ class Queue:
             self.queue.pop(0)
 
     def isEmpty(self):
-        if self.queue==[]:
+        if self.queue == []:
             return True
 
     def display(self):
         print(self.queue)
 
-    def withdraw(self,available_balance):
+    def withdraw(self, available_balance):
         withdraw_cash = int(input("please Enter the withdraw amount:"))
         if available_balance >= withdraw_cash:
             available_balance -= withdraw_cash
             print("Available Balance:", available_balance)
             print("Withdraw Amount:", withdraw_cash)
             queue_obj.deleteElement()
-            #queue_obj.display()
+            # queue_obj.display()
 
         else:
             print("SORRY !!! Insufficient Balance..!!")
             queue_obj.deleteElement()
-            #queue_obj.display()
+            # queue_obj.display()
 
-    def deposit(self,available_balance):
-        deposit_cash=int(input("Enter the deposit amount:"))
-        available_balance+=deposit_cash
+    def deposit(self, available_balance):
+        deposit_cash = int(input("Enter the deposit amount:"))
+        available_balance += deposit_cash
         print("Available Balance:", available_balance)
         print("Withdraw Amount:", deposit_cash)
         queue_obj.deleteElement()
         queue_obj.display()
 
 
+queue_obj = Queue()
 
 
-queue_obj=Queue()
 # # queue_obj.insertElement(10)
 # # queue_obj.insertElement(20)
 # # queue_obj.insertElement(30)
@@ -381,7 +366,7 @@ class checkpalindrome:
     def __init__(self):
         pass
 
-    def palindromeLogic(self,string):
+    def palindromeLogic(self, string):
         stringlist = []
         for i in range(len(string)):
             stringlist.append(string[i])
@@ -389,15 +374,15 @@ class checkpalindrome:
         for i in range(len(string)):
             dequeue_obj.insertElementAtRear(string[i], len(string))
 
-        storelement=dequeue_obj.dequeue
+        storelement = dequeue_obj.dequeue
 
         reverselist = []
         for j in range(len(storelement)):
-            element=dequeue_obj.deleteElementfromRear()
-           #print(element)
+            element = dequeue_obj.deleteElementfromRear()
+            # print(element)
             reverselist.append(element)
-        print("original string:",stringlist)
-        print("reverse string:",reverselist)
+        print("original string:", stringlist)
+        print("reverse string:", reverselist)
         if stringlist == reverselist:
             print("string is palindrome")
         else:
@@ -407,32 +392,28 @@ class checkpalindrome:
 #############################################################################
 class Dequeue:
     def __init__(self):
-        self.dequeue=list()
+        self.dequeue = list()
 
+    def insertElementAtRear(self, data, maxlen):
+        rear = len(self.dequeue)
+        rear = rear + 1
 
-
-    def insertElementAtRear(self,data,maxlen):
-        rear=len(self.dequeue)
-        rear=rear+1
-
-        #print(rear)
-        if rear>maxlen:
+        # print(rear)
+        if rear > maxlen:
             print("Overflow!!..no enough space..!!")
             exit()
         else:
             self.dequeue.append(data)
 
-    def insertElementAtFront(self,data,maxlen):
+    def insertElementAtFront(self, data, maxlen):
         rear = len(self.dequeue)
         rear = rear + 1
 
-        if rear>maxlen:
+        if rear > maxlen:
             print("Overflow!!..no enough space..!!")
             exit()
         else:
-            self.dequeue.insert(0,data)
-
-
+            self.dequeue.insert(0, data)
 
     def deleteElementfromfront(self):
         if dequeue_obj.isEmpty():
@@ -443,22 +424,21 @@ class Dequeue:
 
     def deleteElementfromRear(self):
         rear = len(self.dequeue)
-        rear = rear-1
-        #print(rear)
+        rear = rear - 1
+        # print(rear)
         if dequeue_obj.isEmpty():
             print("Underflow!!..No Elements on stack!!")
             exit()
         else:
             return self.dequeue.pop(rear)
 
-
-
     def isEmpty(self):
-        if self.dequeue==[]:
+        if self.dequeue == []:
             return True
 
     def display(self):
         print(self.dequeue)
+
 
 # maxlen=5
 # dequeue_obj=Dequeue()
@@ -470,47 +450,44 @@ class Dequeue:
 # dequeue_obj.deleteElementfromRear()
 # dequeue_obj.insertElementAtFront(28,maxlen)
 # dequeue_obj.deleteElementfromRear()
-#dequeue_obj=Dequeue()
+# dequeue_obj=Dequeue()
 
 ##############################################################################
 class Anagram:
 
-    def anagramLogic(self,string1,string2,anagramlist):
+    def anagramLogic(self, string1, string2, anagramlist):
 
-         string1=string1.replace(" ", "" )
-         string2=string2.replace(" ", "")
+        string1 = string1.replace(" ", "")
+        string2 = string2.replace(" ", "")
 
-         lowercasestring1 = string1.lower()
-         lowercasestring2 = string2.lower()
+        lowercasestring1 = string1.lower()
+        lowercasestring2 = string2.lower()
 
-         str1_removeduplicates="".join(set(lowercasestring1))
-         str2_removeduplicates = "".join(set(lowercasestring2))
+        str1_removeduplicates = "".join(set(lowercasestring1))
+        str2_removeduplicates = "".join(set(lowercasestring2))
 
-         count=0
-         if len( str1_removeduplicates)==len(str2_removeduplicates):
-             for i in range(len(str1_removeduplicates)):
-                 for j in range(len(str1_removeduplicates)):
-                     if str1_removeduplicates[i]== str2_removeduplicates[j]:
-                         count=count+1
+        count = 0
+        if len(str1_removeduplicates) == len(str2_removeduplicates):
+            for i in range(len(str1_removeduplicates)):
+                for j in range(len(str1_removeduplicates)):
+                    if str1_removeduplicates[i] == str2_removeduplicates[j]:
+                        count = count + 1
 
+        if count == len(str1_removeduplicates) or string1 == string2:
 
-         if count==len(str1_removeduplicates) or string1==string2:
-
-
-
-             anagramlist.append(string2)
+            anagramlist.append(string2)
 
 
-         else:
-             pass
+        else:
+            pass
 
-         return anagramlist
-             # # print(string1, "and", string2, " are an Anagram")
-         # else:
-         #     # print(string1, "and", string2, " are an not Anagram")
-         #     pass
+        return anagramlist
+        # # print(string1, "and", string2, " are an Anagram")
+        # else:
+        #     # print(string1, "and", string2, " are an not Anagram")
+        #     pass
 
-    def unique_list(self,storeanagram):
+    def unique_list(self, storeanagram):
         uniq_list = []
         uniq_set = set()
         for item in storeanagram:
@@ -519,8 +496,8 @@ class Anagram:
                 uniq_set.add(item)
         return uniq_list
 
-    def stackOperationOnAnagramlist(self,uniquelist):
-        popedElement=[]
+    def stackOperationOnAnagramlist(self, uniquelist):
+        popedElement = []
         print("Anagram number after pushed it into stack...")
         for i in range(len(uniquelist)):
             stackllist.push(uniquelist[i])
@@ -528,64 +505,59 @@ class Anagram:
 
         print("Anagram number after poped it from stack...")
         for i in range(len(uniquelist)):
-            item=stackllist.pop()
+            item = stackllist.pop()
             popedElement.append(item)
-        #stackllist.display()
+        # stackllist.display()
         print(popedElement)
 
-    def QueueOperationOnAnagramlist(self,uniquelist):
-        deletedElement=[]
+    def QueueOperationOnAnagramlist(self, uniquelist):
+        deletedElement = []
         print("Anagram number after inserted into queue...")
         for i in range(len(uniquelist)):
             q_linklist_obj.insertElementAtRear(uniquelist[i])
         q_linklist_obj.display()
 
         print("Anagram number after deleted from queue...")
-        for i in range(len(uniquelist)+1):
+        for i in range(len(uniquelist) + 1):
             item = q_linklist_obj.removeElementFromFront()
             deletedElement.append(item)
         # stackllist.display()
         print(deletedElement)
 
 
-
 ###################################################################################
 class StackByLink:
 
     def __init__(self):
-        self.head=Node()
+        self.head = Node()
 
     def push(self, data):
         new_node = Node(data)
-        traverse= self.head
+        traverse = self.head
         while traverse.next != None:
             traverse = traverse.next
         traverse.next = new_node
 
-
-
     def display(self):
-        elements=[]
-        traverse=self.head
-        while traverse.next!=None:
-            traverse=traverse.next
+        elements = []
+        traverse = self.head
+        while traverse.next != None:
+            traverse = traverse.next
             elements.append(traverse.data)
         print(elements)
 
-
     def pop(self):
-        traverse=self.head
+        traverse = self.head
 
-        if traverse.next==None:
+        if traverse.next == None:
             print("Underflow..!!")
 
-
         while traverse.next != None:
-            t=traverse.next
-            if t.next ==None:
-                traverse.next=None
+            t = traverse.next
+            if t.next == None:
+                traverse.next = None
                 return t.data
-            traverse=traverse.next
+            traverse = traverse.next
 
     def isUnderflow(self):
         traverse = self.head
@@ -595,7 +567,9 @@ class StackByLink:
             return False
 
 
-stackllist=StackByLink()
+stackllist = StackByLink()
+
+
 # stackllist.push(10)
 # stackllist.push(20)
 # stackllist.pop()
@@ -606,11 +580,11 @@ stackllist=StackByLink()
 ############################################################################################
 class QueeByLinklist:
     def __init__(self):
-        self.head=Node()
+        self.head = Node()
 
     def insertElementAtRear(self, data):
         new_node = Node(data)
-        traverse= self.head
+        traverse = self.head
         while traverse.next != None:
             traverse = traverse.next
         traverse.next = new_node
@@ -620,19 +594,22 @@ class QueeByLinklist:
             return None
 
         else:
-            pop_node= self.head.data
+            pop_node = self.head.data
             self.head = self.head.next
             return pop_node
 
     def display(self):
-        elements=[]
-        traverse=self.head
-        while traverse.next!=None:
-            traverse=traverse.next
+        elements = []
+        traverse = self.head
+        while traverse.next != None:
+            traverse = traverse.next
             elements.append(traverse.data)
         print(elements)
 
-q_linklist_obj=QueeByLinklist()
+
+q_linklist_obj = QueeByLinklist()
+
+
 # q_linklist_obj.insertElementAtRear(10)
 # q_linklist_obj.insertElementAtRear(20)
 # q_linklist_obj.insertElementAtRear(30)
@@ -644,115 +621,152 @@ q_linklist_obj=QueeByLinklist()
 ################################################################################
 class TwoDArray:
 
+    def primenslots(self, primenumber):
+        row = 10
 
-     def primenslots(self, primenumber):
-         row = 10
+        column = 24
+        matrix = [[0 for j in range(column)] for i in range(row)]
 
-         column =24
-         #matrix = [[for i in range(row) ],[for j in range(column)]]
-         matrix=[]
-         rowlist=[]
-         #column=[]
-         k=0
-         j=0
+        rowlist = []
+        k = 0
+        j = 0
 
-         count=0
-         r = 100-1
-         for i in range(row):
-             rowlist.clear()
+        count = 0
+        r = 100
+        for i in range(row):
+            # rowlist.clear()
 
-             for j in range(column):
-                 if primenumber[j+k]<=r:
-                     rowlist.append(primenumber[j+k])
-                     count=count+1
-             matrix.append(rowlist)
-             k=k+count
-             r = r + 100
-         print(matrix)
+            for j in range(column):
+
+                if k < len(primenumber):
+                    if primenumber[k] <= r:
+                        matrix[i][j]=primenumber[k]
+                        k = k + 1
+                    # count=count+1
+            # k=k+1
+            # newlist=rowlist
+            # matrix.append(newlist)
+            # k=k+count
+            r = r + 100
+        print(matrix)
+
+        print("Two D matrix of prime range 0-1000")
+        for row in matrix:
+            for element in row:
+                print(element, end=" ")
+            print()
+twoDarray_obj = TwoDArray()
 
 
 #     row1=[]
-    #     row2=[]
-    #     row3=[]
-    #     row4=[]
-    #     row5=[]
-    #     row6=[]
-    #     row7=[]
-    #     row8=[]
-    #     row9=[]
-    #     row10=[]
-    #     matrix=[]
-    #
-    #     for i in range(len(primenumber)):
-    #         if primenumber[i]<=100:
-    #             row1.append(primenumber[i])
-    #         elif primenumber[i]<=200:
-    #             row2.append(primenumber[i])
-    #         elif primenumber[i]<=300:
-    #             row3.append(primenumber[i])
-    #         elif primenumber[i]<=400:
-    #             row4.append(primenumber[i])
-    #         elif primenumber[i]<=500:
-    #             row5.append(primenumber[i])
-    #         elif primenumber[i]<=600:
-    #             row6.append(primenumber[i])
-    #         elif primenumber[i]<=700:
-    #             row7.append(primenumber[i])
-    #         elif primenumber[i]<=800:
-    #             row8.append(primenumber[i])
-    #         elif primenumber[i]<=900:
-    #             row9.append(primenumber[i])
-    #         elif primenumber[i]<=1000:
-    #             row10.append(primenumber[i])
-    #         else:
-    #             pass
-    #     matrix.append(row1)
-    #     matrix.append(row2)
-    #     matrix.append(row3)
-    #     matrix.append(row4)
-    #     matrix.append(row5)
-    #     matrix.append(row6)
-    #     matrix.append(row7)
-    #     matrix.append(row8)
-    #     matrix.append(row9)
-    #     matrix.append(row10)
-    #     #print(matrix)
-
-
-        # print("Two D matrix of prime range 0-1000")
-        # for row in matrix:
-        #     for element in row:
-        #         print(element,end=" ")
-        #     print()
+#     row2=[]
+#     row3=[]
+#     row4=[]
+#     row5=[]
+#     row6=[]
+#     row7=[]
+#     row8=[]
+#     row9=[]
+#     row10=[]
+#     matrix=[]
+#
+#     for i in range(len(primenumber)):
+#         if primenumber[i]<=100:
+#             row1.append(primenumber[i])
+#         elif primenumber[i]<=200:
+#             row2.append(primenumber[i])
+#         elif primenumber[i]<=300:
+#             row3.append(primenumber[i])
+#         elif primenumber[i]<=400:
+#             row4.append(primenumber[i])
+#         elif primenumber[i]<=500:
+#             row5.append(primenumber[i])
+#         elif primenumber[i]<=600:
+#             row6.append(primenumber[i])
+#         elif primenumber[i]<=700:
+#             row7.append(primenumber[i])
+#         elif primenumber[i]<=800:
+#             row8.append(primenumber[i])
+#         elif primenumber[i]<=900:
+#             row9.append(primenumber[i])
+#         elif primenumber[i]<=1000:
+#             row10.append(primenumber[i])
+#         else:
+#             pass
+#     matrix.append(row1)
+#     matrix.append(row2)
+#     matrix.append(row3)
+#     matrix.append(row4)
+#     matrix.append(row5)
+#     matrix.append(row6)
+#     matrix.append(row7)
+#     matrix.append(row8)
+#     matrix.append(row9)
+#     matrix.append(row10)
+#     #print(matrix)
 
 
 
 
-
-twoDarray_obj=TwoDArray()
 ##############################################################################
 class BinarySearchTree:
-    def factorial(self,no_of_nodes):
-        fact=1
-        for i in range(1,no_of_nodes+1):
-            fact=fact*i
+    def factorial(self, no_of_nodes):
+        fact = 1
+        for i in range(1, no_of_nodes + 1):
+            fact = fact * i
         return fact
 
-    def countBinaryTree(self ,no_of_nodes):
-        r1=2*no_of_nodes
-        result1=self.factorial(r1)
-        r2=no_of_nodes+1
-        result2=self.factorial(r2)
-        r3=no_of_nodes
-        result3=self.factorial(r3)
+    def countBinaryTree(self, no_of_nodes):
+        r1 = 2 * no_of_nodes
+        result1 = self.factorial(r1)
+        r2 = no_of_nodes + 1
+        result2 = self.factorial(r2)
+        r3 = no_of_nodes
+        result3 = self.factorial(r3)
 
-        possiblebinarytrees=(result1/(result2*result3))
+        possiblebinarytrees = (result1 / (result2 * result3))
 
         print(possiblebinarytrees)
 
-bst_obj=BinarySearchTree()
+
+bst_obj = BinarySearchTree()
 
 ##############################################################################
+class HashFunction:
+    def hashFunctionLogic(self, no_of_slots, storeelement):
+        #element=[54, 26, 93, 17, 77, 31]
+
+        hashlist=[None]*no_of_slots
+        # hashlist.pop(4)
+        # hashlist.insert(4,26)
+        # hashlist.insert(2,45)
+        #print(hashlist)
+        value=no_of_slots+1
+        for i in range(len(storeelement)):
+                position=storeelement[i]%value
+
+                if hashlist[position]==None and position<len(hashlist):
+                    hashlist.pop(position)
+                    hashlist.insert(position,storeelement[i])
+
+                else:
+                    k = 0
+                    while k<len(hashlist):
+                        k = k + 1
+                        if (position+k)<len(hashlist) or position-k >0:
+                            if hashlist[position+k]==None:
+                                hashlist.pop(position+k)
+                                hashlist.insert(position, storeelement[i])
+                                break
+                            elif hashlist[position-k]==None:
+                                hashlist.pop(position - k)
+                                hashlist.insert(position, storeelement[i])
+                                break
+
+
+
+
+                print(hashlist)
 
 
 
@@ -761,11 +775,4 @@ bst_obj=BinarySearchTree()
 
 
 
-
-
-
-
-
-
-
-
+hashfunction_object=HashFunction()
