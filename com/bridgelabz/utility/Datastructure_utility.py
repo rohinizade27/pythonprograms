@@ -1,4 +1,5 @@
 import numpy as np
+import math
 
 class Node:
     def __init__(self,data=None):
@@ -644,88 +645,100 @@ q_linklist_obj=QueeByLinklist()
 class TwoDArray:
 
 
-    def primenslots(self, primenumber):
-        row1=[]
-        row2=[]
-        row3=[]
-        row4=[]
-        row5=[]
-        row6=[]
-        row7=[]
-        row8=[]
-        row9=[]
-        row10=[]
-        matrix=[]
+     def primenslots(self, primenumber):
+         row = 10
 
-        for i in range(len(primenumber)):
-            if primenumber[i]<=100:
-                row1.append(primenumber[i])
-            elif primenumber[i]<=200:
-                row2.append(primenumber[i])
-            elif primenumber[i]<=300:
-                row3.append(primenumber[i])
-            elif primenumber[i]<=400:
-                row4.append(primenumber[i])
-            elif primenumber[i]<=500:
-                row5.append(primenumber[i])
-            elif primenumber[i]<=600:
-                row6.append(primenumber[i])
-            elif primenumber[i]<=700:
-                row7.append(primenumber[i])
-            elif primenumber[i]<=800:
-                row8.append(primenumber[i])
-            elif primenumber[i]<=900:
-                row9.append(primenumber[i])
-            elif primenumber[i]<=1000:
-                row10.append(primenumber[i])
-            else:
-                pass
-        matrix.append(row1)
-        matrix.append(row2)
-        matrix.append(row3)
-        matrix.append(row4)
-        matrix.append(row5)
-        matrix.append(row6)
-        matrix.append(row7)
-        matrix.append(row8)
-        matrix.append(row9)
-        matrix.append(row10)
-        #print(matrix)
+         column =24
+         #matrix = [[for i in range(row) ],[for j in range(column)]]
+         matrix=[]
+         rowlist=[]
+         #column=[]
+         k=0
+         j=0
 
-        print("Two D matrix of prime range 0-1000")
-        for row in matrix:
-            for element in row:
-                print(element,end=" ")
-            print()
+         count=0
+         r = 100-1
+         for i in range(row):
+             rowlist.clear()
+
+             for j in range(column):
+                 if primenumber[j+k]<=r:
+                     rowlist.append(primenumber[j+k])
+                     count=count+1
+             matrix.append(rowlist)
+             k=k+count
+             r = r + 100
+         print(matrix)
 
 
-        # #slot=10
-        # #while slot !=0:
-        #     matrix = []
-        #     row = []
-        #     min = 0
-        #     max = len(primenumber)
-        #     r=100
-        #     for i in range(0,10):
-        #
-        #         for j in range(min,max):
-        #             # min=min+100
-        #             if primenumber[j]<=r:
-        #                 row.append(primenumber[j])
-        #         matrix.append(row)
-        #         r=r+100
-        #     #slot = slot + 1
-        #     print(matrix)
+#     row1=[]
+    #     row2=[]
+    #     row3=[]
+    #     row4=[]
+    #     row5=[]
+    #     row6=[]
+    #     row7=[]
+    #     row8=[]
+    #     row9=[]
+    #     row10=[]
+    #     matrix=[]
+    #
+    #     for i in range(len(primenumber)):
+    #         if primenumber[i]<=100:
+    #             row1.append(primenumber[i])
+    #         elif primenumber[i]<=200:
+    #             row2.append(primenumber[i])
+    #         elif primenumber[i]<=300:
+    #             row3.append(primenumber[i])
+    #         elif primenumber[i]<=400:
+    #             row4.append(primenumber[i])
+    #         elif primenumber[i]<=500:
+    #             row5.append(primenumber[i])
+    #         elif primenumber[i]<=600:
+    #             row6.append(primenumber[i])
+    #         elif primenumber[i]<=700:
+    #             row7.append(primenumber[i])
+    #         elif primenumber[i]<=800:
+    #             row8.append(primenumber[i])
+    #         elif primenumber[i]<=900:
+    #             row9.append(primenumber[i])
+    #         elif primenumber[i]<=1000:
+    #             row10.append(primenumber[i])
+    #         else:
+    #             pass
+    #     matrix.append(row1)
+    #     matrix.append(row2)
+    #     matrix.append(row3)
+    #     matrix.append(row4)
+    #     matrix.append(row5)
+    #     matrix.append(row6)
+    #     matrix.append(row7)
+    #     matrix.append(row8)
+    #     matrix.append(row9)
+    #     matrix.append(row10)
+    #     #print(matrix)
+
+
+        # print("Two D matrix of prime range 0-1000")
+        # for row in matrix:
+        #     for element in row:
+        #         print(element,end=" ")
+        #     print()
+
+
+
+
+
 twoDarray_obj=TwoDArray()
 ##############################################################################
 class BinarySearchTree:
     def factorial(self,no_of_nodes):
         fact=1
-        for i in range(no_of_nodes):
+        for i in range(1,no_of_nodes+1):
             fact=fact*i
         return fact
 
-    def countBinaryTree(self,no_of_nodes):
+    def countBinaryTree(self ,no_of_nodes):
         r1=2*no_of_nodes
         result1=self.factorial(r1)
         r2=no_of_nodes+1
@@ -733,19 +746,13 @@ class BinarySearchTree:
         r3=no_of_nodes
         result3=self.factorial(r3)
 
-        possiblebinarytrees=(r1//r2*r3)
+        possiblebinarytrees=(result1/(result2*result3))
+
         print(possiblebinarytrees)
-
-
-
-
-
-
-
 
 bst_obj=BinarySearchTree()
 
-
+##############################################################################
 
 
 
