@@ -157,14 +157,18 @@ class Utility:
             if (int(year) % 400 == 0):
                 if (int(year) % 100 == 0):
                     if (int(year) % 4 == 0):
-                        print("Entered year is leap year")
+                        #print("Entered year is leap year")
+                         return True
 
                     else:
-                        print("Entered year is not leap year")
+                        #print("Entered year is not leap year")
+                         return False
                 else:
-                    print("Entered year is not leap year")
+                    #print("Entered year is not leap year")
+                     return False
             else:
-                print("Entered year is leap year")
+                #print("Entered year is leap year")
+                return True
         return
 
 ###############################################################################

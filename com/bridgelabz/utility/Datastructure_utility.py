@@ -99,6 +99,35 @@ class Linkedlist:
                 return
         return
 
+    def searchFromFile(self):
+        fileobject = open("inputword.txt", "w+")
+        list = ["rohini ", "rajat ", "sai ", "akansha"]
+        fileobject.writelines(list)
+        fileobject.close()
+
+        fileojbect = open("inputword.txt", "r")
+
+        storefilecontent = fileojbect.read()
+        storefilecontent = str(storefilecontent).split()
+        # print(storefilecontent)
+        fileojbect.close()
+
+        for i in range(len(list)):
+            link_list.append(list[i])
+
+        link_list.display()
+
+        key = input("Enter the Element you want to search:")
+        result = link_list.searchElement(key)
+        print(result)
+
+        if result == False:
+            link_list.append(key)
+        else:
+            link_list.pop(key)
+
+        link_list.display()
+
 
 link_list = Linkedlist()
 
@@ -127,33 +156,6 @@ link_list = Linkedlist()
 
 # link_list.getindexitem(1)
 
-# fileobject = open("inputword.txt", "w+")
-# list=["rohini ","rajat ","sai ","akansha"]
-# fileobject.writelines(list)
-# fileobject.close()
-#
-# fileojbect = open("inputword.txt", "r")
-#
-# storefilecontent = fileojbect.read()
-# storefilecontent=str(storefilecontent).split()
-# print(storefilecontent)
-# fileojbect.close()
-#
-# for i in range(len(list)):
-#     link_list.append(list[i])
-#
-# link_list.display()
-#
-# key=input("Enter the Element you want to search:")
-# result=link_list.searchElement(key)
-# print(result)
-#
-# if result==False:
-#     link_list.append(key)
-# else:
-#     link_list.pop(key)
-#
-# link_list.display()
 
 ###########################################################################################
 
@@ -163,16 +165,20 @@ class OrderedLinkList:
 
     def append(self, data):
         new_node = Node(data)
-
         traverse_node = self.head
+
+        if traverse_node is None:
+            new_node= Node()
+            new_node.data = data
+            traverse_node = self.head
 
         if traverse_node is None:
             new_node.next = traverse_node
             traverse_node = new_node
 
-        if traverse_node.data >= new_node.data:
-            new_node.next = traverse_node
-            traverse_node = new_node
+        # if traverse_node.data >= new_node.data:
+        #     new_node.next = traverse_node
+        #     traverse_node = new_node
 
 
         else:
@@ -238,8 +244,29 @@ class Stack:
     def display(self):
         print(self.stack)
 
+    def checkblanceparantheses(self):
+        expression = input("Enter the Expression:")
+        balance = True
+        for i in range(len(expression)):
+            if expression[i] == '(':
+                stack_obj.push(i)
 
-# stack_obj=Stack()
+            else:
+                if stack_obj.isempty():
+                    balance = False
+                else:
+                    if expression[i] == ')':
+                        stack_obj.pop()
+
+        result = stack_obj.isempty()
+
+        if result == True and balance == True:
+            print("Expression is blanced..!!!")
+        else:
+            print("expression is not balanced..!!")
+
+
+stack_obj=Stack()
 # # stack_obj.push(10)
 # # stack_obj.push(41)
 # # stack_obj.push(90)
@@ -251,25 +278,7 @@ class Stack:
 # # stack_obj.push(20)
 # # stack_obj.display()
 #
-# expression=input("Enter the Expression:")
-# balance=True
-# for i in range(len(expression)):
-#     if expression[i]=='(':
-#         stack_obj.push(i)
-#
-#     else:
-#         if stack_obj.isempty():
-#             balance=False
-#         else:
-#             if expression[i]==')':
-#                 stack_obj.pop()
-#
-# result=stack_obj.isempty()
-#
-# if result==True and balance==True:
-#     print("Expression is blanced..!!!")
-# else:
-#     print("expression is not balanced..!!")
+
 
 ##########################################################################################
 class Queue:
@@ -323,6 +332,28 @@ class Queue:
         queue_obj.deleteElement()
         queue_obj.display()
 
+    def cashCounterLogic(self):
+        available_balance = 500000
+        print("Available Bank Balance = 500000")
+        maxlen = int(input("How may persons are there in a Queue?"))
+        print("people in queue:")
+        for i in range(maxlen):
+            person_id = input("please enter the id of person:")
+            queue_obj.insertElement(person_id, maxlen)
+
+        for i in range(maxlen):
+            queue_obj.display()
+            print("___You have two choices___")
+            print("1. withdraw Cash")
+            print("2. Deposit cash")
+            ch = int(input("Enter your choice:"))
+            if ch == 1:
+                queue_obj.withdraw(available_balance)
+            elif ch == 2:
+                queue_obj.deposit(available_balance)
+            else:
+                print("!!..Invalid choice..!!")
+
 
 queue_obj = Queue()
 
@@ -340,26 +371,7 @@ queue_obj = Queue()
 # #queue_obj.deleteElement()
 # #queue_obj.display()
 #
-# available_balance=500000
-# maxlen=int(input("How may persons are there in a Queue?"))
-# print("people in queue:")
-# for i in range(maxlen):
-#     person_id=input("please enter the id of person:")
-#     queue_obj.insertElement(person_id,maxlen)
-#
-#
-# for i in range(maxlen):
-#     queue_obj.display()
-#     print("___You have two choices___")
-#     print("1. withdraw Cash")
-#     print("2. Deposit cash")
-#     ch = int(input("Enter your choice:"))
-#     if ch == 1:
-#         queue_obj.withdraw(available_balance)
-#     elif ch == 2:
-#         queue_obj.deposit(available_balance)
-#     else:
-#         print("!!..Invalid choice..!!")
+
 
 ###########################################################################################
 class checkpalindrome:
@@ -441,7 +453,7 @@ class Dequeue:
 
 
 # maxlen=5
-# dequeue_obj=Dequeue()
+dequeue_obj=Dequeue()
 # dequeue_obj.insertElementAtRear(10,maxlen)
 # dequeue_obj.insertElementAtRear(11,maxlen)
 # dequeue_obj.insertElementAtFront(21,maxlen)
@@ -653,7 +665,8 @@ class TwoDArray:
         print("Two D matrix of prime range 0-1000")
         for row in matrix:
             for element in row:
-                print(element, end=" ")
+                if element!=0:
+                    print(element, end=" ")
             print()
 twoDarray_obj = TwoDArray()
 
@@ -726,14 +739,14 @@ class BinarySearchTree:
 
         possiblebinarytrees = (result1 / (result2 * result3))
 
-        print(possiblebinarytrees)
+        print("possible binary trees are:",possiblebinarytrees)
 
 
 bst_obj = BinarySearchTree()
 
 ##############################################################################
 class HashFunction:
-    def hashFunctionLogic(self, no_of_slots, storeelement):
+    def hashFunctionLogic(self, no_of_slots,storeelement):
         #element=[54, 26, 93, 17, 77, 31]
 
         hashlist=[None]*no_of_slots
@@ -763,16 +776,77 @@ class HashFunction:
                                 hashlist.insert(position, storeelement[i])
                                 break
 
+        #print(hashlist)
+        return hashlist
 
 
 
-                print(hashlist)
+    def hashSearchFunction(self,key,hashlist,no_of_slots):
+        value = no_of_slots + 1
 
+        for i in range(len(hashlist)):
+                position=key%value
 
+                if hashlist[position]==key and position<len(hashlist):
+                    print("key is present at",position,"index")
+                    exit()
 
-
-
-
-
+                else:
+                    k = 0
+                    while k<len(hashlist):
+                        k = k + 1
+                        if (position+k)<len(hashlist) or position-k >0:
+                            if hashlist[position+k]==key:
+                                print("key is present at", position+k, "index")
+                                exit()
+                            elif hashlist[position-k]==key:
+                                print("key is present at", position-k, "index")
+                                exit()
 
 hashfunction_object=HashFunction()
+
+#########################################################################################
+class Calendar:
+    def calanderlogic(self,year,month,weekday):
+         row = 7
+         column = 7
+         matrix = [[0 for j in range(column)] for i in range(row)]
+         k = 0
+         # isleapyear = utility_obj.leapYearFunction(year)
+         # if isleapyear is True and month==2:
+         monthday=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+         for i in range(row):
+
+            for j in range(column):
+
+                if j >= weekday:
+
+                    matrix[i][j] = monthday[k]
+                    k = k + 1
+         print("S  M  T  W  T  F  S ")
+         for row in matrix:
+            for element in row:
+                if element!=0:
+                    print(element, end=" ")
+            print()
+
+
+
+        # monthday=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+
+
+        #
+        #
+        # for j in range(weekday):
+        #     print(" ", end=" "),
+        #     i = 1
+        #     while i <= month:
+        #         if i < 10:
+        #             print("", i, end=" "),
+        #         else:
+        #              print(i, end=" ")
+        #         if (i + weekday) % 7 == 0:
+        #             print(" ")
+        #         i = i + 1
+
+
