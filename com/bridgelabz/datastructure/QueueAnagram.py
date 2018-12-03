@@ -1,3 +1,12 @@
+"""
+purpose   : Add the Prime Numbers that are Anagram in the Range of 0 - 1000
+            in a Stack using the Linked List and Print the Anagrams in the Reverse Order
+
+@Author   : Rohini Zade
+@version  : 1.0
+@since    : 29-11-2018
+
+"""
 from com.bridgelabz.utility.Utility import Utility
 from com.bridgelabz.utility.Datastructure_utility import *
 

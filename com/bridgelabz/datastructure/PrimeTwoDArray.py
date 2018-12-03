@@ -1,3 +1,12 @@
+"""
+purpose   : Store the prime numbers from given range in a 2D Array
+
+@Author   : Rohini Zade
+@version  : 1.0
+@since    : 29-11-2018
+
+"""
+
 from com.bridgelabz.utility.Utility import Utility
 from com.bridgelabz.utility.Datastructure_utility import *
 

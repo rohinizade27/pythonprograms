@@ -1,3 +1,12 @@
+
+"""
+purpose   : Hashing Function to search a Number in a slot
+@Author   : Rohini Zade
+@version  : 1.0
+@since    : 1-12-2018
+
+"""
+
 from com.bridgelabz.utility.Utility import Utility
 from com.bridgelabz.utility.Datastructure_utility import *
 

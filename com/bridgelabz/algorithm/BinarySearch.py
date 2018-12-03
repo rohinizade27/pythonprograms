@@ -1,16 +1,23 @@
+
+"""
+purpose   : To find the possible Binary Search Trees from given number of node
+
+@Author   : Rohini Zade
+@version  : 1.0
+@since    : 1-12-2018
+
+"""
 from com.bridgelabz.utility.Utility  import Utility
 
-utility_obj=Utility()
+if __name__ == "__main__":
+    utility_obj = Utility()
 
-# print("Enter the size of list:")
-# size=utility_obj.inputIntiger()
-# wordlist=[]
-# print("Enter the string Elements:")
-#wordlist=utility_obj.acceptListElement(size)
-starttime = utility_obj.getstartandstoptime()
-utility_obj.binarySearch()
-stoptime=utility_obj.getstartandstoptime()
-elapsetime=utility_obj.elapsedTime(starttime,stoptime)
-print("Elapsed time is:", elapsetime)
+    starttime = utility_obj.getstartandstoptime()
+    utility_obj.binarySearch()
+    stoptime = utility_obj.getstartandstoptime()
+    elapsetime = utility_obj.elapsedTime(starttime, stoptime)
+    print("Elapsed time is:", elapsetime)
+
+
 
 
