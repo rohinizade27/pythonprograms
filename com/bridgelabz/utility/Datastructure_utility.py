@@ -209,33 +209,73 @@ link_list = Linkedlist()
 
 class OrderedLinkList:
     def __init__(self):
-        self.head = Node()
+        self.head = None
 
-    def append(self, data):
+    def insertdata(self, data):
+        """
+        This function is to insert the data on sorted way
+        :param data: is the data user wants to insert
+        """
         new_node = Node(data)
-        traverse_node = self.head
 
-        if traverse_node is None:
-            new_node= Node()
-            new_node.data = data
-            traverse_node = self.head
+        # if head is null them
+        if self.head is None:
+            new_node.next = self.head
+            self.head = new_node
 
-        if traverse_node is None:
-            new_node.next = traverse_node
-            traverse_node = new_node
 
-        # if traverse_node.data >= new_node.data:
-        #     new_node.next = traverse_node
-        #     traverse_node = new_node
-
+        # if head data is greater than new node data
+        elif self.head.data >= new_node.data:
+            new_node.next = self.head
+            self.head = new_node # new node will become head
 
         else:
 
-            while traverse_node.next != None and traverse_node.next.data < new_node.data:
+
+            traverse_node = self.head
+            # insert the new node after previous node if data of previous
+            # node less than new node
+            if traverse_node.next.data < new_node.data:
+                # and traverse_node.next.data < new_node.data:
+                while traverse_node.next != None :
+                    traverse_node = traverse_node.next
+
+                new_node.next = traverse_node.next
                 traverse_node.next = new_node
-                traverse_node = traverse_node.next
-            new_node.next = traverse_node.next
-            traverse_node.next = new_node
+
+            elif traverse_node.next.data > new_node.data:
+                # and traverse_node.next.data > new_node.data:
+                while traverse_node.next != None:
+                    traverse_node = traverse_node.next
+                new_node.next = self.head
+                self.head=new_node
+
+
+    def insertatfront(self, data):
+        """
+            This method is to display linked list
+        """
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    def searchElement(self, key):
+        """
+        This function is to search element from linked list
+        :param key: is the data user wants to search
+        :return: true if  data is present else return false
+        """
+        traverse_pointer = self.head
+        while traverse_pointer.next != None:
+
+            if traverse_pointer.data == key:
+                return True
+            traverse_pointer = traverse_pointer.next
+
+        if traverse_pointer.data == key:
+            return True
+        return False
+
 
     def display(self):
         elements = []
@@ -606,18 +646,22 @@ class Anagram:
         if len(str1_removeduplicates) == len(str2_removeduplicates):
             for i in range(len(str1_removeduplicates)):
                 for j in range(len(str1_removeduplicates)):
-                    if str1_removeduplicates[i] == str2_removeduplicates[j]:#compare each letter of string to other string
+                    # compare each letter of string to other string
+                    if str1_removeduplicates[i] == str2_removeduplicates[j]:
                         count = count + 1
+                # compare if two strings are ana gram to each other or not
+                if count == len(str1_removeduplicates): # and string1 == string2:
 
-        if count == len(str1_removeduplicates) or string1 == string2:#compare if two strings are angram toeach other or not
-
-            anagramlist.append(string2)
+                     anagramlist.append(string2)
+                     #anagramlist.append(string1)
+                     return anagramlist
 
 
         else:
             pass
 
-        return anagramlist
+
+        #return anagramlist
         # # print(string1, "and", string2, " are an Anagram")
         # else:
         #     # print(string1, "and", string2, " are an not Anagram")
@@ -801,7 +845,8 @@ class TwoDArray:
         """
         row = 10
         column = 24
-        matrix = [[0 for j in range(column)] for i in range(row)] #list of list to store prime number in slots of 100
+        # list of list to store prime number in slots of 100
+        matrix = [[0 for j in range(column)] for i in range(row)]
 
         rowlist = []
         k = 0
@@ -815,7 +860,8 @@ class TwoDArray:
             for j in range(column):
 
                 if k < len(primenumber):
-                    if primenumber[k] <= r: #to create slots of prime between 100,200 so on
+                    # to create slots of prime between 100,200 so on
+                    if primenumber[k] <= r:
                         matrix[i][j]=primenumber[k]
                         k = k + 1
                     # count=count+1
@@ -830,59 +876,10 @@ class TwoDArray:
         for row in matrix:
             for element in row:
                 if element!=0:
-                    print(element, end=" ")#print prime numbers in matrix format
+                    # print prime numbers in matrix format
+                    print(element, end=" ")
             print()
 twoDarray_obj = TwoDArray()
-
-
-#     row1=[]
-#     row2=[]
-#     row3=[]
-#     row4=[]
-#     row5=[]
-#     row6=[]
-#     row7=[]
-#     row8=[]
-#     row9=[]
-#     row10=[]
-#     matrix=[]
-#
-#     for i in range(len(primenumber)):
-#         if primenumber[i]<=100:
-#             row1.append(primenumber[i])
-#         elif primenumber[i]<=200:
-#             row2.append(primenumber[i])
-#         elif primenumber[i]<=300:
-#             row3.append(primenumber[i])
-#         elif primenumber[i]<=400:
-#             row4.append(primenumber[i])
-#         elif primenumber[i]<=500:
-#             row5.append(primenumber[i])
-#         elif primenumber[i]<=600:
-#             row6.append(primenumber[i])
-#         elif primenumber[i]<=700:
-#             row7.append(primenumber[i])
-#         elif primenumber[i]<=800:
-#             row8.append(primenumber[i])
-#         elif primenumber[i]<=900:
-#             row9.append(primenumber[i])
-#         elif primenumber[i]<=1000:
-#             row10.append(primenumber[i])
-#         else:
-#             pass
-#     matrix.append(row1)
-#     matrix.append(row2)
-#     matrix.append(row3)
-#     matrix.append(row4)
-#     matrix.append(row5)
-#     matrix.append(row6)
-#     matrix.append(row7)
-#     matrix.append(row8)
-#     matrix.append(row9)
-#     matrix.append(row10)
-#     #print(matrix)
-
-
 
 
 ##############################################################################
@@ -970,7 +967,7 @@ class HashFunction:
         value = no_of_slots + 1
 
         for i in range(len(hashlist)):
-                position=key%value#find the index from given data
+                position=key%value #find the index from given data
 
                 if hashlist[position]==key and position<len(hashlist):#check if data is presnt on that index postion
                     print("key is present at",position,"index")
@@ -999,7 +996,7 @@ class Calendar:
          k = 0
          # isleapyear = utility_obj.leapYearFunction(year)
          # if isleapyear is True and month==2:
-         monthday=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29]
+         monthday=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
          for i in range(row):
 
             for j in range(column):
@@ -1008,6 +1005,7 @@ class Calendar:
 
                     matrix[i][j] = monthday[k]
                     k = k + 1
+
          print("S  M  T  W  T  F  S ")
          for row in matrix:
             for element in row:
@@ -1015,23 +1013,10 @@ class Calendar:
                     print(element, end=" ")
             print()
 
+#######################################################################################3
 
 
-        # monthday=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
 
 
-        #
-        #
-        # for j in range(weekday):
-        #     print(" ", end=" "),
-        #     i = 1
-        #     while i <= month:
-        #         if i < 10:
-        #             print("", i, end=" "),
-        #         else:
-        #              print(i, end=" ")
-        #         if (i + weekday) % 7 == 0:
-        #             print(" ")
-        #         i = i + 1
 
 

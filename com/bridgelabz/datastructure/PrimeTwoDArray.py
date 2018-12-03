@@ -1,5 +1,5 @@
 """
-purpose   : Store the prime numbers from given range in a 2D Array
+purpose   : print the prime numbers which are anagram from given range in a 2D Array
 
 @Author   : Rohini Zade
 @version  : 1.0
