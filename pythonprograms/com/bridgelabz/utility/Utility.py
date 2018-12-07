@@ -237,7 +237,10 @@ class Utility:
 #####################################################################################
     # def permutationLogic(self,string,currentIndex):
     #     if currentIndex == len(string)):
+    #
     #         for i in range(len(string)):
+    #              string[1]
+
 
 
                             # Algorithm Programs

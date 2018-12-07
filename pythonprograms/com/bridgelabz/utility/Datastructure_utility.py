@@ -113,7 +113,9 @@ class Linkedlist:
         This function is to search element from linked list
         :param key: is the data user wants to search
         :return: true if  data is present else return false
+
         """
+
         traverse_pointer = self.head
         while traverse_pointer.next != None:
             # print(key)
@@ -122,8 +124,8 @@ class Linkedlist:
                 return True
             traverse_pointer = traverse_pointer.next
             # print(traverse_pointer.data)
-        if traverse_pointer.data == key:
-            return True
+       # if traverse_pointer.data == key:
+            #return True
         return False
 
     def pop(self, data):
