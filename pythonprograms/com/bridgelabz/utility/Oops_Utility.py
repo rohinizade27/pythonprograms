@@ -184,7 +184,12 @@ class DeckOfCards:
 
 
     def deckOfCardsLogic(self):
-        deck = list(itertools.product(self.cards_categoeies, self.rank))
+
+        for i in itertools.product(self.cards_categoeies,self.rank):
+            self.cards_categoeies.append(i)
+        random.shuffle(self.cards_categoeies)
+        print(self.cards_categoeies)
+
 
 
 
