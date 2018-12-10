@@ -2,4 +2,5 @@ from com.bridgelabz.utility.Oops_Utility import DeckOfCards
 
 if __name__ == '__main__':
     deckofcards_obj=DeckOfCards()
-    deckofcards_obj.deckOfCardsLogic()
+    suffled_cards=deckofcards_obj.deckOfCardsLogic()
+    deckofcards_obj.print2DdeckofCards(suffled_cards)

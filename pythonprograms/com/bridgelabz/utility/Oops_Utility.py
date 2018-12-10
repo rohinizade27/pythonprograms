@@ -1,5 +1,6 @@
 
 import json
+from com.bridgelabz.utility.Datastructure_utility import QueeByLinklist
 
 class InventoryManagement:
 
@@ -180,15 +181,148 @@ import itertools
 class DeckOfCards:
     def __init__(self):
         self.cards_categoeies=["Clubs", "Diamonds", "Hearts", "Spades"]
-        self.rank=["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
+        self.rank=[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        #self.cards_of_each_player=cards_of_each_player
+
 
 
     def deckOfCardsLogic(self):
-
+        print("Cards after shuffling:")
+        print("*********************")
         for i in itertools.product(self.cards_categoeies,self.rank):
             self.cards_categoeies.append(i)
         random.shuffle(self.cards_categoeies)
-        print(self.cards_categoeies)
+        card_list=self.cards_categoeies
+        print(card_list)
+        return card_list
+
+    def sortedDeckOfCardsLogic(self):
+
+        print("sorted Cards are:")
+        print("******************")
+        cards = []
+        cards_array = []
+        for i in range(len(self.cards_categoeies)):
+            for j in range(len(self.rank)):
+                cards.append(self.cards_categoeies[i])
+                cards.append(self.rank[j])
+            cards_array.append(cards)
+        # print(cards)
+        row = 52
+        column = 2
+        card_matrix = [[0 for j in range(column)] for i in range(row)]
+
+        k = 0
+        r = 1
+        for i in range(row):
+
+            for j in range(column):
+
+                if k < len(cards):
+                    if k <= r:
+                        card_matrix[i][j] = cards[k]
+                        k = k + 1
+            r = r + 2
+        random.shuffle(card_matrix)
+        return card_matrix
+
+    def print2DdeckofCards(self,card_list):
+        row = 10
+        column = 10
+        matrix = [[0 for j in range(column)] for i in range(row)]
+
+        k = 0
+        r = 9
+        for i in range(row):
+
+            for j in range(column):
+
+                if k < len(card_list):
+                    if i == 0 and j == 0:
+                        matrix[i][j] = "player-1: "
+                    elif i == 1 and j == 0:
+                        matrix[i][j] = "player-2: "
+                    elif i == 2 and j == 0:
+                        matrix[i][j] = "player-3: "
+                    elif i == 3 and j == 0:
+                        matrix[i][j] = "player-4: "
+                    elif k <= r and k <= 35:
+                        matrix[i][j] = card_list[k]
+                        k = k + 1
+            r = r + 10
+        # print(matrix)
+        print("\n")
+        print("Two D matrix of shuffled cards:")
+        print("*******************************")
+        for row in matrix:
+            for element in row:
+                if element != 0:
+                    if element != 'Clubs':
+                        if element != "Diamonds":
+                            if element != "Hearts":
+                                if element != "Spades":
+                                    print(element, end=" ")
+
+            print()
+
+##########################################################################################
+
+class SortedDeckOfCards:
+
+    def __init__(self,cards_of_each_player):
+        self.cards_of_each_player=cards_of_each_player
+        #print(self.cards_of_each_player)
+
+    def rankCards(self):
+        players_card=self.cards_of_each_player
+        for i in range(len(players_card)):
+            q_linklist_obj.insertElementAtRear(players_card[i])
+
+        c_list=[]
+        for j in range(len(players_card)+1):
+            deleted_item=q_linklist_obj.removeElementFromFront()
+            if deleted_item != None:
+                c_list.append(deleted_item)
+
+
+        for c in range(0,len(c_list)):
+            for k in range(0, len(c_list) - c - 1):
+                if c_list[k][1] > c_list[k+1][1]:
+                    temp=c_list[k]
+                    c_list[k]=c_list[k+1]
+                    c_list[k+1]=temp
+
+        return c_list
+q_linklist_obj = QueeByLinklist()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

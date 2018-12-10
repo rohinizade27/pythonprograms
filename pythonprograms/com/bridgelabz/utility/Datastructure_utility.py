@@ -784,6 +784,7 @@ class QueeByLinklist:
         while traverse.next != None:#traverse it you find last node
             traverse = traverse.next
         traverse.next = new_node
+        new_node.next = None
 
     def removeElementFromFront(self):
         """
