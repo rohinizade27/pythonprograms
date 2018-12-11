@@ -1,9 +1,8 @@
-
 import json
 from com.bridgelabz.utility.Datastructure_utility import QueeByLinklist
 
-class InventoryManagement:
 
+class InventoryManagement:
     inventory_details_dict = {
         "inventory_details": [{"Item_Name": "wheat", "weight_in_kgs": 50, "weight_per_kg": 35},
                               {"Item_Name": "rice", "weight_in_kgs": 40, "weight_per_kg": 45},
@@ -16,7 +15,6 @@ class InventoryManagement:
     with open('Inventory.json', 'w') as f:
         f.write(s)
 
-
     def __init__(self):
         with open('Inventory.json', 'r') as file:
             json_str = file.read()
@@ -27,27 +25,22 @@ class InventoryManagement:
 
         # print(self.existing_material_list)
 
-
-
     def display_items(self):
-        #print(type(self.existing_material_list))
+        # print(type(self.existing_material_list))
         print("Available items are:")
         print("********* ******** **************")
         print("Item_Name  Weight   weight_per_kg")
         print("********* ******** **************")
         for i in range(len(self.existing_material_list)):
-            items = self.existing_material_list [i]["Item_Name"]
+            items = self.existing_material_list[i]["Item_Name"]
             items_weight = self.existing_material_list[i]["weight_in_kgs"]
             items_weight_per_kg = self.existing_material_list[i]["weight_per_kg"]
 
-            print(items,"     ",items_weight,"      " ,items_weight_per_kg)
-
-
-
+            print(items, "     ", items_weight, "      ", items_weight_per_kg)
 
     def getUserInput(self):
-        ch=input("do you want to continue:y/n:")
-        while ch=='y':
+        ch = input("do you want to continue:y/n:")
+        while ch == 'y':
             print(" \n 1.Buy Items \n 2.View items \n 3.Exit")
             choice = int(input("Enter your choice:"))
             if choice == 1:
@@ -55,20 +48,17 @@ class InventoryManagement:
 
             elif choice == 2:
                 self.display_items()
-               # self.display_updated_file()
+            # self.display_updated_file()
 
             else:
                 print("!!!..Invalid choice..!!!")
 
-
-    def update_iteams(self,user_item_in_kgs,user_item):
+    def update_iteams(self, user_item_in_kgs, user_item):
         for i in range(len(self.existing_material_list)):
             if user_item == self.existing_material_list[i]["Item_Name"]:
-                total_weight=self.existing_material_list[i]["weight_in_kgs"]
-                total_weight=total_weight-user_item_in_kgs
-                self.existing_material_list[i]["weight_in_kgs"]=total_weight
-
-
+                total_weight = self.existing_material_list[i]["weight_in_kgs"]
+                total_weight = total_weight - user_item_in_kgs
+                self.existing_material_list[i]["weight_in_kgs"] = total_weight
 
     def inventoryManagementLogic(self):
 
@@ -82,12 +72,12 @@ class InventoryManagement:
 
         for i in range(len(self.existing_material_list)):
             if user_item in self.existing_material_list[i]["Item_Name"]:
-            #if user_item == self.existing_material_list [i]["Item_Name"]:
-                user_item_in_kgs=int(input("How many kgs you want??"))
-                user_item_per_kg=self.existing_material_list [i]["weight_per_kg"]
-                total_price=user_item_in_kgs*user_item_per_kg
-                print("total price:",total_price)
-                self.update_iteams(user_item_in_kgs,user_item)
+                # if user_item == self.existing_material_list [i]["Item_Name"]:
+                user_item_in_kgs = int(input("How many kgs you want??"))
+                user_item_per_kg = self.existing_material_list[i]["weight_per_kg"]
+                total_price = user_item_in_kgs * user_item_per_kg
+                print("total price:", total_price)
+                self.update_iteams(user_item_in_kgs, user_item)
                 self.display_items()
                 break
             else:
@@ -113,7 +103,7 @@ class InventoryManagement:
                 with open('Inventory.json', 'w') as f:
                     f.write(s)
 
-    def display_updated_file(self,updated_list):
+    def display_updated_file(self, updated_list):
         print("Available items are:")
         print("********* ******** **************")
         print("Item_Name  Weight   weight_per_kg")
@@ -133,23 +123,22 @@ import re
 
 class RegularExpression:
     def __init__(self):
-        self.string="Hello <<name>>, We have your full name as <<full name>> " \
-               "in our system. your contact number is 91-xxxxxxxxxx. " \
-               "Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016."
-
+        self.string = "Hello <<name>>, We have your full name as <<full name>> " \
+                      "in our system. your contact number is 91-xxxxxxxxxx. " \
+                      "Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016."
 
     def validateUserInputs(self):
-        name=input("Enter your name:")
-        fullname=input("Please Enter your full name: ")
-        mobile_number=(input("Enter your mobile number:"))
-        current_date=str(datetime.date.today())
+        name = input("Enter your name:")
+        fullname = input("Please Enter your full name: ")
+        mobile_number = (input("Enter your mobile number:"))
+        current_date = str(datetime.date.today())
 
-        regex_name=re.compile("[<]{2}[a-z]{4}[>]{2}")
-        replace_name=regex_name.sub(name,self.string)
+        regex_name = re.compile("[<]{2}[a-z]{4}[>]{2}")
+        replace_name = regex_name.sub(name, self.string)
         print("\n")
         print(replace_name)
 
-        regex_full_name=re.compile("[<]{2}[a-z]{4}\s[a-z]{4}[>]{2}")
+        regex_full_name = re.compile("[<]{2}[a-z]{4}\s[a-z]{4}[>]{2}")
         replace_full_name = regex_full_name.sub(fullname, self.string)
         print(replace_full_name)
 
@@ -159,40 +148,38 @@ class RegularExpression:
 
         regex_curr_date = re.compile(r"\d{2}/\d{2}/\d{4}")
         replace_curr_date = regex_curr_date.sub(current_date, self.string)
-        print(replace_curr_date )
+        print(replace_curr_date)
         print("\n")
-
 
         substitutions = {"<<name>>": name, "<<full name>>": fullname,
                          "91-xxxxxxxxxx": mobile_number, "01/01/2016": current_date}
 
         return substitutions
 
+    def RegularExpressionLogic(self, substitutions):
+        template = sorted(substitutions, key=len, reverse=True)
+        regex = re.compile('|'.join(map(re.escape, template)))
+        return regex.sub(lambda match: substitutions[match.group(0)], self.string)
 
-    def RegularExpressionLogic(self,substitutions):
-            template = sorted(substitutions, key=len, reverse=True)
-            regex = re.compile('|'.join(map(re.escape, template)))
-            return regex.sub(lambda match: substitutions[match.group(0)], self.string)
 
 ###################################################################################################
 import random
 import itertools
 
+
 class DeckOfCards:
     def __init__(self):
-        self.cards_categoeies=["Clubs", "Diamonds", "Hearts", "Spades"]
-        self.rank=[2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-        #self.cards_of_each_player=cards_of_each_player
-
-
+        self.cards_categoeies = ["Clubs", "Diamonds", "Hearts", "Spades"]
+        self.rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+        # self.cards_of_each_player=cards_of_each_player
 
     def deckOfCardsLogic(self):
         print("Cards after shuffling:")
         print("*********************")
-        for i in itertools.product(self.cards_categoeies,self.rank):
+        for i in itertools.product(self.cards_categoeies, self.rank):
             self.cards_categoeies.append(i)
         random.shuffle(self.cards_categoeies)
-        card_list=self.cards_categoeies
+        card_list = self.cards_categoeies
         print(card_list)
         return card_list
 
@@ -226,7 +213,7 @@ class DeckOfCards:
         random.shuffle(card_matrix)
         return card_matrix
 
-    def print2DdeckofCards(self,card_list):
+    def print2DdeckofCards(self, card_list):
         row = 10
         column = 10
         matrix = [[0 for j in range(column)] for i in range(row)]
@@ -265,121 +252,224 @@ class DeckOfCards:
 
             print()
 
+
 ##########################################################################################
 
 class SortedDeckOfCards:
 
-    def __init__(self,cards_of_each_player):
-        self.cards_of_each_player=cards_of_each_player
-        #print(self.cards_of_each_player)
+    def __init__(self, cards_of_each_player):
+        self.cards_of_each_player = cards_of_each_player
+        # print(self.cards_of_each_player)
 
     def rankCards(self):
-        players_card=self.cards_of_each_player
+        players_card = self.cards_of_each_player
         for i in range(len(players_card)):
             q_linklist_obj.insertElementAtRear(players_card[i])
 
-        c_list=[]
-        for j in range(len(players_card)+1):
-            deleted_item=q_linklist_obj.removeElementFromFront()
+        c_list = []
+        for j in range(len(players_card) + 1):
+            deleted_item = q_linklist_obj.removeElementFromFront()
             if deleted_item != None:
                 c_list.append(deleted_item)
 
-
-        for c in range(0,len(c_list)):
+        for c in range(0, len(c_list)):
             for k in range(0, len(c_list) - c - 1):
-                if c_list[k][1] > c_list[k+1][1]:
-                    temp=c_list[k]
-                    c_list[k]=c_list[k+1]
-                    c_list[k+1]=temp
+                if c_list[k][1] > c_list[k + 1][1]:
+                    temp = c_list[k]
+                    c_list[k] = c_list[k + 1]
+                    c_list[k + 1] = temp
 
         return c_list
+
+
 q_linklist_obj = QueeByLinklist()
 
+##########################################################################################
+import json
+
+
+class CliniqueManagement:
+
+    def __init__(self):
+        pass
+
+    def getUserInput(self):
+
+        print("welcome to Clinique Management System..!!:")
+        ch = input("do you want to continue:y/n:")
+        while ch == 'y':
+            print(" \n 1.Options for Doctor \n 2.Options for patients  \n 3.Exit")
+            choice = int(input("Enter your choice:"))
+            if choice == 1:
+                print("\n 1.Add Doctor \n 2.view Doctors \n 3.Exit")
+                ch1 = int(input("Enter your choice:"))
+                if ch1 == 1:
+                    self.addDoctors()
+                elif ch1 == 2:
+                    self.viewDoctors()
+                elif ch1 == 3:
+                    break
+                else:
+                    print("!!..Invalid choice..!!")
+                    break
+            elif choice == 2:
+                print("\n 1.Add Appointment \n 2.Search Doctor \n 3.Exit")
+                ch2 = int(input("Enter your choice:"))
+                if ch2 == 1:
+                    self.addAppointment()
+                elif ch2 == 2:
+                    self.searchDoctor()
+                elif ch2 == 3:
+                    break
+                else:
+                    print("!!..Invalid choice..!!")
+                    break
+            elif choice == 3:
+                break
+            else:
+                print("!!!..Invalid choice..!!!")
+                break
+
+    def readJsonfileofDoctor(self):
+
+        doctors_information = {
+                    "doctor": [{
+                                    "Name": "Dr.Arman Singh",
+                                    "Id": 101,
+                                    "specialization": "Cardiologist",
+                                    "Availability": "AM"
+                                },
+                                {
+                                    "Name": "Dr.Shital Patil",
+                                    "Id": 102,
+                                    "specialization":"Neurologist",
+                                    "Availability": "PM"
+                                },
+                                {
+                                    "Name": "Dr.Varun Shaha",
+                                    "Id": 103,
+                                    "specialization": "Addiction psychiatrist",
+                                    "Availability": "AM"
+
+                                }]
+                               }
+        # s = json.dumps(doctors_information)
+        # with open('Doctors_info.json', 'w') as file_obj:
+        #     file_obj.write(s)
+        #     file_obj.close()
+
+        with open('Doctors_info.json', 'r') as file_obj:
+            json_str = file_obj.read()
+            json_value = json.loads(json_str)
+
+            file_obj.close()
+
+        return json_value
+
+    def readJsonfileofPatient(self):
+
+        patient_information = {
+            "patient":[{
+                    "Name": "sahil sharma",
+                    "Id": 12,
+                    "Age": 24,
+                    "mobile number": "7865232419"
+                     },
+                    {
+                    "Name": "pratik Patil",
+                    "Id": 12,
+                    "Age": 34,
+                    "mobile number": "8956345213"
+                     },
+                    {
+                    "Name": "sampada dagwar",
+                    "Id": 14,
+                    "Age": 21,
+                    "mobile number": "9420036520"
 
+                    },
 
+                   {
+                    "Name": "nidhi kamath",
+                    "Id": 15,
+                    "Age": 22,
+                    "mobile number": "8976348562"
 
+                   }]
+         }
+        s = json.dumps(patient_information)
+        with open('Patient_info.json', 'w') as file_obj:
+            file_obj.write(s)
 
+        with open('Patient_info.json', 'r') as file_obj:
+            json_str = file_obj.read()
+            json_value = json.loads(json_str)
 
+        file_obj.close()
 
+        return json_value
 
+    def readJsonfileofAppoinment(self):
 
+        appoinment_information = {
+            "Dr.Arman Singh":[{"patient Name": "sahil sharma", "time":"11 AM"}, {"patient Name": "pratik Patil", "time":"9 AM"}],
+            "Dr.Shital Patil":[{"patient Name": "sampada dagwar", "time":"1 PM"}],
+            "Dr.Varun Shaha":[{"patient Name": "nidhi kamath", "time":"9 AM"}]}
 
+        s = json.dumps(appoinment_information)
+        with open('appoinment_info.json', 'w') as file_obj:
+            file_obj.write(s)
 
+        with open('appoinment_info.json', 'r') as file_obj:
+            json_str = file_obj.read()
+            json_value = json.loads(json_str)
 
+        file_obj.close()
 
+        return json_value
 
 
+    def addDoctors(self):
+        doctor_name=input("Enter Name:")
+        doctor_id=int(input("Enter Id:"))
+        specilization=input("Enter Specialization:")
+        availability=input("Enter Availability(AM/PM/Both):")
 
+        with open('Doctors_info.json', 'r') as file_obj:
 
+            json_str = file_obj.read()
+            new_json_value = json.loads(json_str)
+            file_obj.close()
 
+        new_dict={"Name": doctor_name , "Id": doctor_id, "specialization": specilization, "Availability": availability}
 
+        with open('Doctors_info.json', 'w') as file_obj:
+            new_json_value["doctor"].append(new_dict)
+            file_obj.write(json.dumps(new_json_value))
+            file_obj.close()
 
+    def viewDoctors(self):
+        doctor_dict=self.readJsonfileofDoctor()
+        doctor_list=doctor_dict["doctor"]
 
+        print(type(doctor_list))
+        print("Available Doctors are:")
+        print("----------------------------------------")
+        print("Name                    specialization ")
+        print("----------------------------------------")
 
+        for i in range(len(doctor_list)):
+            name = doctor_list[i]["Name"]
+            specialization = doctor_list[i]["specialization"]
 
+            print(name, "          ",specialization)
 
+    def addAppointment(self):
+        pass
 
+    def searchDoctor(self):
+        pass
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+CliniqueManagement_obj = CliniqueManagement()
+CliniqueManagement_obj.readJsonfileofDoctor()
