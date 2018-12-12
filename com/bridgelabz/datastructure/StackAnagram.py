@@ -27,12 +27,8 @@ if __name__ == "__main__":
     uniquelist = []
 
     print("The prime number which are Anagram:")
-    for i in range(len(primenumber)):
-        for j in range(len(primenumber)):
-            if primenumber[i] > 0 and primenumber[j] > 0:
-                string1 = str(primenumber[i])
-                string2 = str(primenumber[j])
-                storeanagram = anagram_obj.anagramLogic(string1, string2, anagramlist)
+    storeanagram = anagram_obj.anagramLogic(primenumber, anagramlist)
+    # print(storeanagram)
     uniquelist = anagram_obj.unique_list(storeanagram)
     uniquelist = list(map(int, uniquelist))
     sortedlist = uniquelist.sort(reverse=False)

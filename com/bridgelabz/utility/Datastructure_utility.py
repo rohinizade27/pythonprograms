@@ -1,4 +1,4 @@
-
+from datetime import date, timedelta
 class Node:
     def __init__(self, data=None):
         """
@@ -113,7 +113,9 @@ class Linkedlist:
         This function is to search element from linked list
         :param key: is the data user wants to search
         :return: true if  data is present else return false
+
         """
+
         traverse_pointer = self.head
         while traverse_pointer.next != None:
             # print(key)
@@ -122,8 +124,8 @@ class Linkedlist:
                 return True
             traverse_pointer = traverse_pointer.next
             # print(traverse_pointer.data)
-        if traverse_pointer.data == key:
-            return True
+       # if traverse_pointer.data == key:
+            #return True
         return False
 
     def pop(self, data):
@@ -625,47 +627,31 @@ dequeue_obj=Dequeue()
 ##############################################################################
 class Anagram:
 
-    def anagramLogic(self, string1, string2, anagramlist):
+    def anagramLogic(self,primenumber,anagramlist):
         """
          This function is to find whether given to strings are anagram to each other or not
         :param string1: 1st string to check for anagram
         :param string2: 2nd string to check for anagram
         :param anagramlist: list to store anagram strings
         :return:list of string which are angram
+
         """
-        string1 = string1.replace(" ", "")
-        string2 = string2.replace(" ", "")
 
-        lowercasestring1 = string1.lower()
-        lowercasestring2 = string2.lower()
+        for i in range(len(primenumber)):
+            for j in range(len(primenumber)):
+                if primenumber[i] > 0 and primenumber[j] > 0:
+                    string1 = str(primenumber[i])
+                    string2 = str(primenumber[j])
 
-        str1_removeduplicates = "".join(set(lowercasestring1))
-        str2_removeduplicates = "".join(set(lowercasestring2))
+                    # the sorted strings are checked
+                    if string1 != string2:
+                        if (sorted(string1) == sorted(string2)):
+                            anagramlist.append(string1)
+                            anagramlist.append(string2)
 
-        count = 0
-        if len(str1_removeduplicates) == len(str2_removeduplicates):
-            for i in range(len(str1_removeduplicates)):
-                for j in range(len(str1_removeduplicates)):
-                    # compare each letter of string to other string
-                    if str1_removeduplicates[i] == str2_removeduplicates[j]:
-                        count = count + 1
-                # compare if two strings are ana gram to each other or not
-                if count == len(str1_removeduplicates): # and string1 == string2:
+        #print(anagramlist)
+        return anagramlist
 
-                     anagramlist.append(string2)
-                     #anagramlist.append(string1)
-                     return anagramlist
-
-
-        else:
-            pass
-
-
-        #return anagramlist
-        # # print(string1, "and", string2, " are an Anagram")
-        # else:
-        #     # print(string1, "and", string2, " are an not Anagram")
-        #     pass
 
     def unique_list(self, storeanagram):
         uniq_list = []
@@ -798,6 +784,7 @@ class QueeByLinklist:
         while traverse.next != None:#traverse it you find last node
             traverse = traverse.next
         traverse.next = new_node
+        new_node.next = None
 
     def removeElementFromFront(self):
         """
@@ -870,7 +857,7 @@ class TwoDArray:
             # matrix.append(newlist)
             # k=k+count
             r = r + 100
-        print(matrix)
+        #print(matrix)
 
         print("Two D matrix of prime range 0-1000")
         for row in matrix:
@@ -989,29 +976,122 @@ hashfunction_object=HashFunction()
 
 #########################################################################################
 class Calendar:
-    def calanderlogic(self,year,month,weekday):
-         row = 7
-         column = 7
-         matrix = [[0 for j in range(column)] for i in range(row)]
-         k = 0
-         # isleapyear = utility_obj.leapYearFunction(year)
-         # if isleapyear is True and month==2:
-         monthday=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
-         for i in range(row):
 
-            for j in range(column):
+    def get_first_day(self,year,month,d_years=0, d_months=0):
+        """
+        This function is to find first day of month
+        :param year: user entered year
+        :param month: user enterd month
+        :param d_years: it is 0 at initial state
+        :param d_months: it is 0 at initial state
+        :return: it returns 1st day of month
+        """
 
-                if j >= weekday:
+        y = year + d_years
+        m = month + d_months
+        a, m = divmod(m - 1, 12)
+        return date(y + a, m + 1, 1)
 
-                    matrix[i][j] = monthday[k]
+    def leapyear(self,year):
+        """
+         This function is to find given year is leap year or not
+        :param year:given year
+        :return:return True if year is leap year else return False
+        """
+        if (int(year) % 400 == 0) and (int(year) % 100 == 0) or (int(year) % 4 == 0):
+            return True
+        else:
+            return False
+
+    def calanderlogic(self,firstday_of_month,month,year):
+        """
+         This function is to create calculator of given month and year
+        :param firstday_of_month: starting day of month
+        :param month: given month to create calender
+        :param year: given year to create calender
+        """
+        if month<=12:
+            print("firstday_of_month:", firstday_of_month)
+            totalmonthday = 0
+            if month == 2:
+                # check given year is leap year or not
+                isleapyear = calendar_obj.leapyear(year)
+                if isleapyear == True:
+                    totalmonthday = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+                                     24, 25, 26, 27, 28, 29]
+                else:
+                    totalmonthday = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
+                                     24, 25, 26, 27, 28]
+
+            elif month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12:
+                totalmonthday = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+                                 25, 26, 27, 28, 29, 30, 31]
+            else:
+                totalmonthday = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+                                 25, 26, 27, 28, 29, 30]
+
+            for a in range(firstday_of_month):
+                for d in range(firstday_of_month):
+                    totalmonthday.append(len(totalmonthday) + d)
+                    break
+
+            row = 7
+            column = 7
+            k = 0
+            matrix = [[0 for j in range(column)] for i in range(row)]
+            for i in range(row):
+
+                for j in range(column):
+                    if k < len(totalmonthday):
+                        # for printing first day on proper position
+                        if j >= firstday_of_month:
+                            # for storing element on first row
+                            matrix[i][j] = totalmonthday[k - firstday_of_month]
+                    if k < len(totalmonthday):
+                        if i > 0:
+                            # for storing elements on 2nd row onwards
+                            matrix[i][j] = totalmonthday[k - firstday_of_month]
+
                     k = k + 1
 
-         print("S  M  T  W  T  F  S ")
-         for row in matrix:
-            for element in row:
-                if element!=0:
-                    print(element, end=" ")
-            print()
+            # printing the matrix in 2D format
+            print("**********************************")
+            print("Calender of month:", month, "year:", year)
+            print("**********************************")
+            print("Su  Mo  Tu  We  Th  Fr  Sat")
+            for row in matrix:
+                for element in row:
+
+                    if element == 0:
+                        print("  ", end="  ")
+                    else:
+                        if element <= 9:
+                            print(element, end="   ")
+                        else:
+                            print(element, end="  ")
+                print()
+        else:
+            print("Invalid input..!!!")
+
+
+calendar_obj = Calendar()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #######################################################################################3
 

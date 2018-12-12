@@ -165,10 +165,10 @@ class Utility:
                          return False
                 else:
                     #print("Entered year is not leap year")
-                     return False
+                     return True
             else:
                 #print("Entered year is leap year")
-                return True
+                return False
         return
 
 ###############################################################################
@@ -237,7 +237,10 @@ class Utility:
 #####################################################################################
     # def permutationLogic(self,string,currentIndex):
     #     if currentIndex == len(string)):
+    #
     #         for i in range(len(string)):
+    #              string[1]
+
 
 
                             # Algorithm Programs
