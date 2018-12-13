@@ -16,6 +16,9 @@ class InventoryManagement:
         f.write(s)
 
     def __init__(self):
+        """
+         This method is to initialization
+        """
         with open('Inventory.json', 'r') as file:
             json_str = file.read()
             json_value = json.loads(json_str)
@@ -26,6 +29,9 @@ class InventoryManagement:
         # print(self.existing_material_list)
 
     def display_items(self):
+        """
+        This method is to display all existing materials in inventory system
+        """
         # print(type(self.existing_material_list))
         print("Available items are:")
         print("********* ******** **************")
@@ -39,6 +45,10 @@ class InventoryManagement:
             print(items, "     ", items_weight, "      ", items_weight_per_kg)
 
     def getUserInput(self):
+        """
+          This method accept the inputs from user
+        """
+        print("welcome to Inventory Management System..!!:")
         ch = input("do you want to continue:y/n:")
         while ch == 'y':
             print(" \n 1.Buy Items \n 2.View items \n 3.Exit")
@@ -54,6 +64,11 @@ class InventoryManagement:
                 print("!!!..Invalid choice..!!!")
 
     def update_iteams(self, user_item_in_kgs, user_item):
+        """
+         This method is to update the items in inventory system
+        :param user_item_in_kgs:new item total weight
+        :param user_item: new item entered by user
+        """
         for i in range(len(self.existing_material_list)):
             if user_item == self.existing_material_list[i]["Item_Name"]:
                 total_weight = self.existing_material_list[i]["weight_in_kgs"]
@@ -61,7 +76,13 @@ class InventoryManagement:
                 self.existing_material_list[i]["weight_in_kgs"] = total_weight
 
     def inventoryManagementLogic(self):
+        """
+          This method is to implement detail logic of inventory management system,
+          like to buy any item,first it checks that item is present or not ,if item is presnt
+          then it will return total price of buy item,otherwise system will ask user to make
+          entery of new item and update the item list
 
+        """
         print("Available items are:")
         for i in range(len(self.existing_material_list)):
             items = self.existing_material_list[i]["Item_Name"]
@@ -88,22 +109,43 @@ class InventoryManagement:
             weight = int(input("Enter the weight of new item:"))
             weight_per_kg = int(input("Enter the weight of new item per kg:"))
 
-            new_dict = {}
-            new_dict.update({"Item_Name": user_item, "weight_in_kgs": weight, "weight_per_kg": weight_per_kg})
 
-            with open('Inventory.json', 'r') as file:
-                json_str = file.read()
+            with open('Inventory.json', 'r') as file_obj:
+                json_str = file_obj.read()
                 new_json_value = json.loads(json_str)
-                print(type(new_json_value))
                 updated_list = new_json_value["inventory_details"]
+
+                file_obj.close()
+
+            self.display_updated_file(updated_list)
+
+            new_dict = {"Item_Name": user_item, "weight_in_kgs": weight, "weight_per_kg": weight_per_kg}
+
+            with open('Inventory.json', 'w') as file_obj:
+                #new_json_value["inventory_details"].append(new_dict)
                 updated_list.append({"Item_Name": user_item, "weight_in_kgs": weight, "weight_per_kg": weight_per_kg})
-                print(updated_list)
-                self.display_updated_file(updated_list)
-                s = json.dumps(updated_list)
-                with open('Inventory.json', 'w') as f:
-                    f.write(s)
+                file_obj.write(json.dumps(updated_list))
+                file_obj.close()
+
+
+
+            # with open('Inventory.json', 'r') as file:
+            #     json_str = file.read()
+            #     new_json_value = json.loads(json_str)
+            #     print(type(new_json_value))
+            #     updated_list = new_json_value["inventory_details"]
+            #     updated_list.append({"Item_Name": user_item, "weight_in_kgs": weight, "weight_per_kg": weight_per_kg})
+            #     print(updated_list)
+            #     self.display_updated_file(updated_list)
+            #     s = json.dumps(updated_list)
+            #     with open('Inventory.json', 'w') as f:
+            #         f.write(s)
 
     def display_updated_file(self, updated_list):
+        """
+        This method is to display items including newly added items
+        :param updated_list: updated item list
+        """
         print("Available items are:")
         print("********* ******** **************")
         print("Item_Name  Weight   weight_per_kg")
@@ -122,12 +164,17 @@ import re
 
 
 class RegularExpression:
+
     def __init__(self):
         self.string = "Hello <<name>>, We have your full name as <<full name>> " \
                       "in our system. your contact number is 91-xxxxxxxxxx. " \
                       "Please,let us know in case of any clarification Thank you BridgeLabz 01/01/2016."
 
     def validateUserInputs(self):
+        """
+         This method is to take inputs from user
+        :return: it returns the dictionary which contain keys like name,fullname,moblie number and current date
+        """
         name = input("Enter your name:")
         fullname = input("Please Enter your full name: ")
         mobile_number = (input("Enter your mobile number:"))
@@ -168,12 +215,20 @@ import itertools
 
 
 class DeckOfCards:
+
     def __init__(self):
+        """
+        This is to initialize cards_categories and rank
+        """
         self.cards_categoeies = ["Clubs", "Diamonds", "Hearts", "Spades"]
         self.rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
         # self.cards_of_each_player=cards_of_each_player
 
     def deckOfCardsLogic(self):
+        """
+         This method is to suffle cards
+        :return: it returns list of suffle cards
+        """
         print("Cards after shuffling:")
         print("*********************")
         for i in itertools.product(self.cards_categoeies, self.rank):
@@ -184,7 +239,10 @@ class DeckOfCards:
         return card_list
 
     def sortedDeckOfCardsLogic(self):
-
+        """
+         This method is to print the cards of each player in sorted manner
+        :return: returns the list of sorted cards
+        """
         print("sorted Cards are:")
         print("******************")
         cards = []
@@ -258,10 +316,19 @@ class DeckOfCards:
 class SortedDeckOfCards:
 
     def __init__(self, cards_of_each_player):
+        """
+        This function is to initialize each player with random cards
+        :param cards_of_each_player: list of random cards
+        """
         self.cards_of_each_player = cards_of_each_player
         # print(self.cards_of_each_player)
 
     def rankCards(self):
+        """
+         This method is to arrange the cards of each player by rank of cards
+        :return:it returns the list of sorted cards
+
+        """
         players_card = self.cards_of_each_player
         for i in range(len(players_card)):
             q_linklist_obj.insertElementAtRear(players_card[i])
@@ -294,7 +361,9 @@ class CliniqueManagement:
         pass
 
     def getUserInput(self):
-
+        """
+         This method is to take the input from user
+        """
         print("welcome to Clinique Management System..!!:")
         ch = input("do you want to continue:y/n:")
         while ch == 'y':
@@ -340,7 +409,10 @@ class CliniqueManagement:
                 break
 
     def readJsonfileofDoctor(self):
-
+        """
+         This method is to create the json file which contain information about doctors
+        :return: it return doctor file in the form of dictionary
+        """
         doctors_information = {
                     "doctor": [{
                                     "Name": "Dr.Arman Singh",
@@ -376,7 +448,10 @@ class CliniqueManagement:
         return json_value
 
     def readJsonfileofPatient(self):
-
+        """
+         This method is to create the json file which contain information about patient
+        :return: it returns file of patient in form of dictionary
+        """
         patient_information = {
             "patient":[{
                     "Name": "sahil sharma",
@@ -421,7 +496,10 @@ class CliniqueManagement:
 
 
     def readJsonfileofAppoinment(self):
-
+        """
+         This method is to create the json file which contain all information about patients appointment
+        :return: it returns appointment file in the form of dictionary
+        """
         appoinment_information = {
             "Dr.Arman Singh":[{"patient Name": "sahil sharma","Id": 12,"Age": 24,"mobile number": "7865232419", "time":"AM"},
                               {"patient Name": "pratik Patil","Id": 12,"Age": 34,"mobile number": "8956345213", "time":"AM"}],
@@ -444,6 +522,9 @@ class CliniqueManagement:
 
 
     def addDoctors(self):
+        """
+         This method is to add new entery doctor
+        """
         doctor_name=input("Enter Name:")
         doctor_id=int(input("Enter Id:"))
         specilization=input("Enter Specialization:")
@@ -464,6 +545,9 @@ class CliniqueManagement:
 
 
     def viewDoctors(self):
+        """
+         This method is to display all available doctors
+        """
         doctor_dict=self.readJsonfileofDoctor()
         doctor_list=doctor_dict["doctor"]
 
@@ -480,6 +564,9 @@ class CliniqueManagement:
             print(name, "          ",specialization)
 
     def addAppointment(self):
+        """
+         This method is to take appointment by patient
+        """
         print("Name of doctors")
         print("---------------")
         doctor_dict = self.readJsonfileofDoctor()
@@ -535,6 +622,9 @@ class CliniqueManagement:
 
 
     def searchDoctorbyName(self):
+        """
+         This method is to search the doctor by name to check the availability of doctor
+        """
         doctor_dict = self.readJsonfileofDoctor()
         doctor_list = doctor_dict["doctor"]
         name=input("Enter doctor name you want to search:")
@@ -548,14 +638,35 @@ class CliniqueManagement:
 
 
     def searchDoctorbyId(self):
-        pass
+        """
+         This method is to search the doctor by Id to check the availability of doctor
+        """
+        doctor_dict = self.readJsonfileofDoctor()
+        doctor_list = doctor_dict["doctor"]
+        id = int(input("Enter doctor Id you want to search:"))
+        for i in range(len(doctor_list)):
+            if id == doctor_list[i]["Id"]:
+                print("Doctor is available..!!")
+                break
+            else:
+                print("Doctor is not available..!!")
+                break
 
 
     def searchDoctorbySpecialization(self):
-        pass
-
-
-
+        """
+        This method is to search the doctor by specialization to check the availability of doctor
+        """
+        doctor_dict = self.readJsonfileofDoctor()
+        doctor_list = doctor_dict["doctor"]
+        specialization = input("Enter doctor specialization you want to search:")
+        for i in range(len(doctor_list)):
+            if specialization == doctor_list[i]["specialization"]:
+                print("Doctor is available..!!")
+                break
+            else:
+                print("Doctor is not available..!!")
+                break
 
     # def addpatient(self, name, id, age, mob_no):
     #     # patient_dict = self.readJsonfileofPatient()
@@ -577,3 +688,10 @@ class CliniqueManagement:
 
 CliniqueManagement_obj = CliniqueManagement()
 CliniqueManagement_obj.readJsonfileofDoctor()
+
+################################################################################################################
+# class StockReport:
+#     def __init__(self):
+#         pass
+#
+#     def stockReport(self):
