@@ -10,8 +10,9 @@ class InventoryManagement:
                               {"Item_Name": "lentils", "weight_in_kgs": 60, "weight_per_kg": 52},
                               {"Item_Name": "groundnut", "weight_in_kgs": 45, "weight_per_kg": 62}
                               ]}
-
+    # convert python dictionary to json format string
     s = json.dumps(inventory_details_dict)
+    # open json file to write
     with open('Inventory.json', 'w') as f:
         f.write(s)
 
@@ -19,8 +20,10 @@ class InventoryManagement:
         """
          This method is to initialization
         """
+        # open json file for reading purpose
         with open('Inventory.json', 'r') as file:
             json_str = file.read()
+            # loads the data and convert it into dictionary format
             json_value = json.loads(json_str)
 
             #   print(json_value)
@@ -92,13 +95,20 @@ class InventoryManagement:
         user_item = input("please Enter the item you want to buy:")
 
         for i in range(len(self.existing_material_list)):
+            # check entered item available in existing list or not
             if user_item in self.existing_material_list[i]["Item_Name"]:
+
                 # if user_item == self.existing_material_list [i]["Item_Name"]:
                 user_item_in_kgs = int(input("How many kgs you want??"))
                 user_item_per_kg = self.existing_material_list[i]["weight_per_kg"]
+
+                # calculate total price
                 total_price = user_item_in_kgs * user_item_per_kg
                 print("total price:", total_price)
+
+                # update the item list
                 self.update_iteams(user_item_in_kgs, user_item)
+                # display list
                 self.display_items()
                 break
             else:
@@ -233,7 +243,9 @@ class DeckOfCards:
         print("*********************")
         for i in itertools.product(self.cards_categoeies, self.rank):
             self.cards_categoeies.append(i)
+        # shuffle cards
         random.shuffle(self.cards_categoeies)
+        # store shuffled cards in one list
         card_list = self.cards_categoeies
         print(card_list)
         return card_list
@@ -252,9 +264,9 @@ class DeckOfCards:
                 cards.append(self.cards_categoeies[i])
                 cards.append(self.rank[j])
             cards_array.append(cards)
-        # print(cards)
         row = 52
         column = 2
+        # list of list to create cards
         card_matrix = [[0 for j in range(column)] for i in range(row)]
 
         k = 0
@@ -272,12 +284,16 @@ class DeckOfCards:
         return card_matrix
 
     def print2DdeckofCards(self, card_list):
+        """
+        This method is to print deck of cards in 2D matrix format
+        :param card_list: list of shuffled card
+        """
         row = 10
         column = 10
         matrix = [[0 for j in range(column)] for i in range(row)]
 
         k = 0
-        r = 9
+        r = 10
         for i in range(row):
 
             for j in range(column):
@@ -295,7 +311,9 @@ class DeckOfCards:
                         matrix[i][j] = card_list[k]
                         k = k + 1
             r = r + 10
+
         # print(matrix)
+        # print suffled cards in 2D matrix format
         print("\n")
         print("Two D matrix of shuffled cards:")
         print("*******************************")
@@ -331,14 +349,17 @@ class SortedDeckOfCards:
         """
         players_card = self.cards_of_each_player
         for i in range(len(players_card)):
+            # insert each player(having 9 distinct cards) on queue
             q_linklist_obj.insertElementAtRear(players_card[i])
 
         c_list = []
         for j in range(len(players_card) + 1):
+            # delete each player(having 9 distinct cards) on queue
             deleted_item = q_linklist_obj.removeElementFromFront()
             if deleted_item != None:
                 c_list.append(deleted_item)
 
+       # to sort the cards rankwise
         for c in range(0, len(c_list)):
             for k in range(0, len(c_list) - c - 1):
                 if c_list[k][1] > c_list[k + 1][1]:
@@ -439,8 +460,10 @@ class CliniqueManagement:
         #     file_obj.write(s)
         #     file_obj.close()
 
+        # open json file for reading purpose
         with open('Doctors_info.json', 'r') as file_obj:
             json_str = file_obj.read()
+            # loads the data and convert it into dictionary format
             json_value = json.loads(json_str)
 
             file_obj.close()
@@ -481,12 +504,16 @@ class CliniqueManagement:
 
                    }]
          }
+        # convert python dictionary to json format string
         s = json.dumps(patient_information)
+        # open json file to write
         with open('Patient_info.json', 'w') as file_obj:
             file_obj.write(s)
 
+        # open json file to read
         with open('Patient_info.json', 'r') as file_obj:
             json_str = file_obj.read()
+            # loads the data and convert it into dictionary format
             json_value = json.loads(json_str)
 
         file_obj.close()
@@ -507,13 +534,16 @@ class CliniqueManagement:
             "Dr.Varun Shaha":[{"patient Name": "nidhi kamath", "Id": 15,"Age": 22,"mobile number": "8976348562" ,"time":"AM"}],
             "Dr. Amit Joshi": [{"patient Name": "pratik Patil","Id": 12,"Age": 34,"mobile number": "8956345213", "time":"AM"}]}
 
-
+        # convert python dictionary to json format string
         s = json.dumps(appoinment_information)
+        # open json file to write
         with open('appoinment_info.json', 'w') as file_obj:
             file_obj.write(s)
 
+        # open json file to read
         with open('appoinment_info.json', 'r') as file_obj:
             json_str = file_obj.read()
+            # loads the data and convert it into dictionary format
             json_value = json.loads(json_str)
 
         file_obj.close()
@@ -531,15 +561,19 @@ class CliniqueManagement:
         availability=input("Enter Availability(AM/PM/Both):")
 
         with open('Doctors_info.json', 'r') as file_obj:
-
+            # open json file to read
             json_str = file_obj.read()
+            # loads the data and convert it into dictionary format
             new_json_value = json.loads(json_str)
             file_obj.close()
 
+        # add new entry
         new_dict={"Name": doctor_name , "Id": doctor_id, "specialization": specilization, "Availability": availability}
 
+        # open json file to write
         with open('Doctors_info.json', 'w') as file_obj:
             new_json_value["doctor"].append(new_dict)
+            # convert python dictionary to json format string
             file_obj.write(json.dumps(new_json_value))
             file_obj.close()
 
@@ -548,7 +582,9 @@ class CliniqueManagement:
         """
          This method is to display all available doctors
         """
+        # call function to read file which returns dictionary
         doctor_dict=self.readJsonfileofDoctor()
+        # store list of json file in new list doctor_list
         doctor_list=doctor_dict["doctor"]
 
         print(type(doctor_list))
@@ -557,6 +593,7 @@ class CliniqueManagement:
         print("Name                    specialization ")
         print("----------------------------------------")
 
+        # traverse doctor file
         for i in range(len(doctor_list)):
             name = doctor_list[i]["Name"]
             specialization = doctor_list[i]["specialization"]
@@ -569,10 +606,10 @@ class CliniqueManagement:
         """
         print("Name of doctors")
         print("---------------")
+        # call function to read file which returns dictionary
         doctor_dict = self.readJsonfileofDoctor()
+        # store list of json file in new list doctor_list
         doctor_list = doctor_dict["doctor"]
-
-
 
 
         for i in range(len(doctor_list)):
@@ -588,7 +625,7 @@ class CliniqueManagement:
         appointment_list = appointment_dict[doctor_name]
         #print(len(appointment_list))
 
-
+        # check each doctor has maximum 5 patient
         if len(appointment_list) <5:
             for i in range(len(doctor_list)):
                 if doctor_name == doctor_list[i]["Name"]:
@@ -600,15 +637,20 @@ class CliniqueManagement:
                         mob_no = input("Enter patient's mobile number:")
 
                         #self.addpatient(name,id,age,mob_no)
+                        # open json file to read
                         with open('appoinment_info.json', 'r') as file_obj:
                             json_str = file_obj.read()
+                            # loads the data and convert it into dictionary format
                             new_json_value = json.loads(json_str)
                             file_obj.close()
 
+                        # add new entry
                         new_dict = {"patient Name": name ,"Id": id,"Age": age,"mobile number": mob_no, "time":time}
 
+                        # open json file to write
                         with open('appoinment_info.json', 'w') as file_obj:
                             new_json_value[doctor_name].append(new_dict)
+                            # convert python dictionary to json format string
                             file_obj.write(json.dumps(new_json_value))
                             file_obj.close()
 
@@ -629,6 +671,7 @@ class CliniqueManagement:
         doctor_list = doctor_dict["doctor"]
         name=input("Enter doctor name you want to search:")
         for i in range(len(doctor_list)):
+            # check entered name is equal to name in file
             if name == doctor_list[i]["Name"]:
                 print(name, "Doctor is available..!!")
                 break
@@ -643,6 +686,7 @@ class CliniqueManagement:
         """
         doctor_dict = self.readJsonfileofDoctor()
         doctor_list = doctor_dict["doctor"]
+        # check entered id is equal to id in file
         id = int(input("Enter doctor Id you want to search:"))
         for i in range(len(doctor_list)):
             if id == doctor_list[i]["Id"]:
@@ -661,6 +705,7 @@ class CliniqueManagement:
         doctor_list = doctor_dict["doctor"]
         specialization = input("Enter doctor specialization you want to search:")
         for i in range(len(doctor_list)):
+            # check entered specialization is equal to specialization in file
             if specialization == doctor_list[i]["specialization"]:
                 print("Doctor is available..!!")
                 break
